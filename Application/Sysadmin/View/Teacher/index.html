@@ -50,6 +50,12 @@
 		<input type="text" name="name" value="{:I('get.name')}" class="form-control" placeholder="姓名/工号">
 	</div>
 </div>
+	<div class="col-md-2" >
+		<div class="input-group panel">
+			<span class="input-group-addon">职称</span>
+			<input type="text" name="technical" value="{:I('get.technical')}" class="form-control" placeholder="职称">
+		</div>
+	</div>
 	<div class="col-md-2">
 		<div class="input-group panel">
 			<span class="input-group-addon">会员类型</span>
@@ -85,7 +91,7 @@
 		<th>ID</th>
 		<th>姓名</th>
 		<th>工号</th>
-		<!--<th>性别</th>-->
+		<th>职称</th>
 		<th>状态</th>
 		<th>添加时间</th>
 		<th>操作</th>
@@ -97,7 +103,7 @@
 		<td>{$vo.id}</td>
 		<td>{$vo.username}<br></td>
 		<td>{$vo.worker_id}</td>
-		<!--<td><if condition="$vo['sex'] eq 1">男<elseif condition="$vo['sex'] eq 2"/>女</if></td>-->
+		<td>{$vo.technical}</td>
 		<td>
 			<eq name="vo.status" value="1">
 				<a href="{:U('Teacher/editnav',array('id'=>$vo['id']))}" class="label label-success label-mini">已启用</a>

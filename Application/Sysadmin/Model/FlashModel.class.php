@@ -46,14 +46,10 @@ Class FlashModel extends Model{
 		$time = time();
 		if($data['start_time'] && $data['end_time']){
 			if(strtotime($data['start_time']) < $time){
-			
 				return false;
 			}
-			
 		}
-		return true;
-		
-		
+		return true;	
 	}
    
 }

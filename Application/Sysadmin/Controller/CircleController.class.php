@@ -7,7 +7,7 @@ class CircleController extends CommonController {
 	}
     public function index(){
 		create_up_url(U('index'),'Circle');
-		$cat_name = '项目管理';
+		$cat_name = '科研项目';
 		$_db = M('Circle');
 		$map = array();
 		$is_service = 0;
@@ -68,6 +68,9 @@ class CircleController extends CommonController {
 
 			$lists[$m]['cat_name'] = $this->cat_name(M('Circat'),$v['cat_id']);
 			$lists[$m]['rank_name'] = $this->cat_name(M('Cirattr'),$v['rank_id']);
+
+            $map_app['aid'] = array('eq',$v['id']);
+            $lists[$m]['apply_count'] = _Numbers(M('Apply'),$map_app);
 
             //推荐
             $flag=String2Array($v['flag']);
@@ -299,11 +302,191 @@ class CircleController extends CommonController {
 
     }
 
-    public function uploads(){
 
-        $rs = $this->pupload();
-        $this->ajaxReturn($rs);
+    /*查看科研申请*/
+    public function show(){
+
+        $cat_name = '科研申请';
+        $this -> assign('cat_name',$cat_name);
+        $_db = M('Apply');
+        $map = array();
+        $is_service = 0;
+
+        /*显示状态*/
+        $examine = I('get.examine','-1');
+        if($examine>=0){
+            $map['examine'] = array('eq',$examine);
+            $is_service++;
+        }else{
+            $map['examine'] = array('neq',0);
+            $is_service++;
+        }
+
+
+        /*标题*/
+        $name = I('get.name','');
+        if($name){
+            $map_1['username|phone'] = array('like','%'.$name."%");
+            $news_1 = M("Member")->where($map_1)->select();
+            $str_1 = '';
+            foreach($news_1 as $c1=>$d1){
+                $str_1 .= $d1['id'].',';
+            }
+            $str_1 = rtrim($str_1,',');
+            $map['mid'] = array('in',$str_1);
+            $is_service++;
+
+        }
+
+        /*时间起始*/
+        $start_time = I('get.start_time','');
+        $end_time = I('get.end_time','');
+        if($start_time && $end_time){
+            $start = strtotime($start_time);
+            $end = strtotime($end_time);
+            $map['create_time'] = array('BETWEEN',array($start,$end));
+            $is_service++;
+        }elseif(!$start_time && $end_time){
+            $end = strtotime($end_time);
+            $map['create_time'] = array('ELT',$end);
+            $is_service++;
+        }elseif($start_time && !$end_time){
+            $start = strtotime($start_time);
+            $map['create_time'] = array('EGT',$start);
+            $is_service++;
+        }
+
+        $this->assign('is_service',$is_service);
+        $page_num = 10;
+        $p = I('get.p',1);
+        $count	= $_db->where($map)->count();
+        $Page	= new \Common\Other\Page($count,$page_num);
+        $show	= $Page->show();
+        $lists = $_db->where($map)->page($p.','.$page_num)->order('id desc')->select();
+        //echo M()->getLastSql();
+        /*
+         * 管理员名称
+         * 栏目分类名称
+         *
+         */
+        foreach($lists as $m=>$v){
+
+            $lists[$m]['cat_name'] = $this->cat_name(M('Circat'),$v['cat_id']);
+            $lists[$m]['rank_name'] = $this->cat_name(M('Cirattr'),$v['rank_id']);
+
+            $info = sql_info(M('Circle'),$v['aid']);
+            $lists[$m]['title'] = $info['title'];
+
+            $mem = sql_info(M('Member'),$v['mid']);
+            $lists[$m]['username'] = $mem['username']?$mem['username']:$mem['phone'];
+
+            $mem = sql_info(M('Teacher'),$v['tid']);
+            $lists[$m]['teacher_username'] = $mem['username'];
+
+            if($v['examine'] == 1){
+                $lists[$m]['examine_name'] = '已提交';
+            }elseif($v['examine'] == 2){
+                $lists[$m]['examine_name'] = '已通过';
+            }elseif($v['examine'] == 3){
+                $lists[$m]['examine_name'] = '已驳回';
+            }
+
+
+        }
+        $this->assign('lists',$lists);
+        $this->assign('page',$show);
+
+        /*栏目分类*/
+        $cat_lists = M('Circat')->field('id,catname as name')->where(array('up_id'=>array('neq',0),'status'=>array('eq',1)))->cache(60,true)->select();
+        $this->assign('cat_lists',$cat_lists);
+
+
+        $menu_show[0] = 'Circle';
+        $menu_show[1] = 'show';
+        $this->assign('menu_show',$menu_show);
+        $this -> display();
+
     }
-	
+
+    public function edit_apply(){
+        $cat_name = '查看申请';
+        $_db = D('Apply');
+        if(IS_POST){
+            $id = I('post.id',0);
+            $map['id'] = array('eq',$id);
+
+            if(!$_db->create($_POST)){
+                $this->error($_db->getError().'');
+            }else{
+
+                $ret = $_db->where($map)->save();
+
+                //科研标题
+                $info = $_db->where($map)->find();
+                $infos = sql_info(M('Circle'),$info['aid']);
+                if($ret){
+                    $this->inserlog('科研申请：'.$infos['title'].',ID:'.$id.' 编辑成功','Apply');
+                    $this->success("科研申请：".$infos['title']."编辑成功",U('Circle/show'));
+                }else{
+                    $this->error("科研申请：".$infos['title']."编辑失败");
+                }
+            }
+
+        }else{
+            $map['id'] = array('eq',I('get.id'));
+            $info = $_db->where($map)->find();
+            //科研标题
+            $infos = sql_info(M('Circle'),$info['aid']);
+            $info['title'] = $infos['title'];
+
+            //申请人、申请人电话
+            $mem = sql_info(M('Member'),$info['mid']);
+            $info['mid_username'] = $mem['username']?$mem['username']:$mem['phone'];
+            $info['mid_phone'] = $mem['phone'];
+
+            //导师、导师电话
+            $mem = sql_info(M('Teacher'),$info['tid']);
+            $info['tid_username'] = $mem['username'];
+            $info['technical'] = $mem['technical'];
+
+
+            $this->assign('info',$info);
+            $this->assign('cat_name',$cat_name);
+
+            $menu_show[0] = 'Circle';
+            $menu_show[1] = 'show';
+            $this->assign('menu_show',$menu_show);
+            $this->display();
+        }
+    }
+    public function del_apply(){
+        if(IS_GET){
+            $id = I('get.id',0);
+            $m_admin['id'] = array('eq',$id);
+
+            $info = M('Apply')->where($m_admin)->find();
+            //科研标题
+            $infos = sql_info(M('Circle'),$info['aid']);
+
+            //申请人
+            $mem = sql_info(M('Member'),$info['mid']);
+            $mem['username'] = $mem['username']?$mem['username']:$mem['phone'];
+
+			$ret = M('Apply')->where($m_admin)->limit(1)->delete();
+//            $sql = "DELETE FROM cms_circle WHERE id = ".$id;
+//            $ret = M('Circle')->execute($sql);
+            if($ret){
+                $json['status'] = '1';
+                $this->inserlog($mem['username'].'申请的科研项目：'.$infos['title'].',ID:'.$id.' 删除成功','Apply');
+                $json['info']	= '科研申请删除成功';
+            }else{
+                $json['status'] = '0';
+                $json['info']	= '科研申请删除失败';
+            }
+            echo json_encode($json);exit;
+        }
+    }
+
+
 	
 }

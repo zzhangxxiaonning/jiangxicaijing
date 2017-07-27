@@ -18,6 +18,12 @@ class TeacherController extends CommonController {
 			$is_service++;
 		}
 
+        $technical = I('get.technical','');
+		if($technical){
+            $map['technical'] = array('like','%'.$technical.'%');
+            $is_service++;
+        }
+
         $status = I('get.status','-1');
         if($status>0){
             $map['status'] = array('eq',$status);

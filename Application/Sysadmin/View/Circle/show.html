@@ -46,32 +46,21 @@
 		</span>
 	</header>
 	<div class="panel-body" style=" <eq name="is_service" value="0">display: none;<else/>display: block;</eq>">
-<form action="{:U('index')}" method="get">
+<form action="{:U('show')}" method="get">
 <div class="col-md-2" style="min-width: 20.666667%;">	
 	<div class="input-group panel">
-		<span class="input-group-addon">名称</span>
+		<span class="input-group-addon">申请人</span>
 		<input type="text" name="name" value="{:I('get.name')}" class="form-control" placeholder="">
 	</div>
 </div>
-
 <div class="col-md-2">
 	<div class="input-group panel">
-		<span class="input-group-addon">栏目</span>
-		<select name="cat_id" class="form-control">
+		<span class="input-group-addon">状态</span>
+		<select class="form-control" name="examine">
 			<option value="-1">全部</option>
-			<volist name="cat_lists" id="vo">
-			<option value="{$vo.id}" <if condition="I('get.cat_id','-1') eq $vo['id']"> selected</if>>{$vo.name}</option>
-			</volist>
-		  </select>
-	</div>
-</div>
-<div class="col-md-2">
-	<div class="input-group panel">
-		<span class="input-group-addon">显示状态</span>
-		<select class="form-control" name="status">
-			<option value="-1">全部</option>
-			<option value="1" <if condition="I('get.status','-1') eq 1"> selected</if> >已启用</option>
-			<option value="0" <if condition="I('get.status','-1') eq '0'"> selected</if> >已禁用</option>
+			<option value="1" <if condition="I('get.examine','-1') eq 1"> selected</if> >已提交</option>
+			<option value="2" <if condition="I('get.examine','-1') eq 2"> selected</if> >已通过</option>
+			<option value="3" <if condition="I('get.examine','-1') eq 3"> selected</if> >已驳回</option>
 		  </select>
 	</div>
 </div>
@@ -100,11 +89,10 @@
 	<tr>
 		<th>ID</th>
 		<th>标题</th>
-		<th>栏目</th>
+		<th>申请人</th>
 		<!-- <th>地区</th> -->
-		<th>级别</th>
-		<th>排序</th>
-		<th>显示状态</th>
+		<th>导师</th>
+		<th>申请状态</th>
 		<th>时间</th>
 		<th>操作</th>
 	</tr>
@@ -115,30 +103,23 @@
 	<tr>
 		<td>{$vo.id}</td>
 		<td>{$vo.title}<if condition="in_array('r',$vo['flag'])"><code>推荐</code></if></td>
-		<td>{$vo.cat_name}</td>
+		<td>{$vo.username}</td>
 		<!-- <td>{$vo.city_name}</td> -->
-		<td>{$vo.rank_name}</td>
-		<td><input type="text" name="sort['{$vo.id}']" class="sort" value="{$vo.sort}"></td> 
-		<td>
-		<eq name="vo.status" value="1">
-			<a href="{:U('Circle/editnav',array('id'=>$vo['id']))}" class="label label-success label-mini">已启用</a>
-		<else />
-			<a href="{:U('Circle/editnav',array('id'=>$vo['id']))}" class="label label-warning label-mini">已禁用</a>
-		</eq>
-		</td>
+		<td>{$vo.teacher_username}</td>
+		<td>{$vo.examine_name}</td>
 		<td>{$vo.create_time|date='Y-m-d H:i:s',###}</td>
 		<td>
-		<a href="{:U('show',array('id'=>$vo['id']))}" class="btn btn-default btn-sm"><i class="fa fa-eye"></i> 查看申请<code>{$vo.apply_count}</code></a>
-		<a href="{:U('edit',array('id'=>$vo['id']))}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> 编辑</a>
-		<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_index',array('id'=>$vo['id']))}" title="确定是否删除“{$vo.title}”删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
+
+		<a href="{:U('edit_apply',array('id'=>$vo['id']))}" class="btn btn-default btn-sm"><i class="fa fa-edit"></i> 编辑</a>
+		<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_apply',array('id'=>$vo['id']))}" title="确定是否删除“{$vo.username}”的申请，删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
 		</td>
 	</tr>
 	</volist>
-    <tr>
-		<td colspan="10">
-		<button class="btn btn-mini jqUrlSubmitReload" style="cursor:pointer;" ><i class="icon-random"></i>更新排序</button>
-		</td>
-	</tr>
+    <!--<tr>-->
+		<!--<td colspan="10">-->
+		<!--<button class="btn btn-mini jqUrlSubmitReload" style="cursor:pointer;" ><i class="icon-random"></i>更新排序</button>-->
+		<!--</td>-->
+	<!--</tr>-->
 	</tbody>
 	</form>
 </table>
@@ -148,8 +129,8 @@
 				<div class="">
 					<ul class="pagination">{$page}</ul>
 				</div>
-				<h4>Tips:</h4>
-				<p>1.状态：<code>已启用</code>表示可以正常显示；<code>已禁用</code>表示不显示</p>
+				<!--<h4>Tips:</h4>-->
+				<!--<p>1.状态：<code>已启用</code>表示可以正常显示；<code>已禁用</code>表示不显示</p>-->
 				<!-- <p>2.有效期：<code>开始时间</code>表示当前时间大于该广告开始时间的时间，该广告才可以使用；<code>结束时间</code>表示当前时间小于该广告的结束时间，广告可以正常使用；<code>如果都不设置</code>该广告永久有效；<code>只设置一个时间</code>表示只限制开始或者结束时间</p> -->
 			</div>
 		</section>

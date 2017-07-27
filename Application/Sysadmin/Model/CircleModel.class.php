@@ -10,11 +10,16 @@ Class CircleModel extends Model{
 	//自动验证
 	protected  $_validate =array(
 		array('title','require','标题不能为空',0,'',3),
+		array('start_time','require','开始时间不可为空！',0,'',3),
+		array('start_time,end_time','check_time_dq','开始时间需要大于当前时间！',1,'callback',3),
+		array('start_time,end_time','check_time_dx','结束时间需要大于开始时间！',1,'callback',3),
 	);
 	//自动完成
 	protected $_auto = array (
     	array('create_time','time',1,'function'),	//创建时间
     	array('update_time','time',3,'function'),	//编辑时间	
+		array('start_time','time_get',3,'callback'), //活动开始时间	
+		array('end_time','time_get',3,'callback'),//活动结束时间
     	array('admin_id','GetAdmin',1,'callback'),
 	);
 	protected function GetAdmin(){
@@ -26,7 +31,24 @@ Class CircleModel extends Model{
 		}
 		return null;
 	}
-   
+	public function check_time_dx($data){
+		if($data['start_time'] && $data['end_time']){
+			if(strtotime($data['start_time']) >= strtotime($data['end_time'])){
+				return false;
+			}
+		}
+		return true;
+	}
+	//判断开始时间大于当前时间
+	public function check_time_dq($data){
+		$time = time();
+		if($data['start_time'] && $data['end_time']){
+			if(strtotime($data['start_time']) < $time){
+				return false;
+			}
+		}
+		return true;	
+	}
 }
 
 ?>

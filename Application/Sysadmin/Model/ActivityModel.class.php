@@ -12,6 +12,8 @@ Class ActivityModel extends Model{
 		array('title','require','标题不能为空',0,'',3),
 		array('rank_id','require','请选择活动级别！',0,'',3),
 		array('address','require','活动地址不可为空！',0,'',3),
+		array('start_time','require','开始时间不可为空！',0,'',3),
+		array('start_time,end_time','check_time_dq','开始时间需要大于当前时间！',1,'callback',3),
 		array('start_time,end_time','check_time_dx','结束时间需要大于开始时间！',1,'callback',3),
 	);
 	//自动完成
@@ -39,6 +41,17 @@ Class ActivityModel extends Model{
 		}
 		return true;
 	}
+	//判断开始时间大于当前时间
+	public function check_time_dq($data){
+		$time = time();
+		if($data['start_time'] && $data['end_time']){
+			if(strtotime($data['start_time']) < $time){
+				return false;
+			}
+		}
+		return true;	
+	}
+	
    
 }
 
