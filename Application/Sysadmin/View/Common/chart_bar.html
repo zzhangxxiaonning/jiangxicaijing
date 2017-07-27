@@ -1,0 +1,52 @@
+<!--section class="panel">
+	<div class="panel-body">
+		<div class="summary">
+			<span>年度总预约</span>
+			<h3 class="red-txt">{$order_count}单</h3>
+		</div>
+		<div id="income" class="chart-bar"></div>
+	</div>
+</section>
+<section class="panel">
+	<div class="panel-body">
+		<div class="summary">
+			<span>年度有效预约</span>
+			<h3 class="green-txt">{$order_yx_count}单</h3>
+		</div>
+		<div id="expense" class="chart-bar"></div>
+	</div>
+</section-->
+
+<!--Sparkline Chart-->
+<!--<script src="{$public}js/sparkline/jquery.sparkline.js"></script>-->
+<!--script src="{$public}js/sparkline/sparkline-init.js"></script-->
+<script>
+    /*var Script = function () {
+        $(".sparkline").each(function(){
+            var $data = $(this).data();
+
+            $data.valueSpots = {'0:': $data.spotColor};
+
+            $(this).sparkline( $data.data || "html", $data,
+                {
+                    tooltipFormat: '<span style="display:block; padding:0px 10px 12px 0px;">' +
+                    '<span style="color: {{color}}">&#9679;</span> {{offset:names}} ({{percent.1}}%)</span>'
+                });
+        });
+        $("#income").sparkline([{$zong_string}], {
+            type: 'bar',
+            height: '35',
+            barWidth: 5,
+            barSpacing: 2,
+            barColor: '#fc8675'
+        });
+
+        $("#expense").sparkline([{$yx_string}], {
+            type: 'bar',
+            height: '35',
+            barWidth: 5,
+            barSpacing: 2,
+            barColor: '#65cea7'
+        });
+    }();*/
+</script>

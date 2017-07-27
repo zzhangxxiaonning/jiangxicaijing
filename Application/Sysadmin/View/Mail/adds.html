@@ -1,0 +1,177 @@
+<include file="Common/title" />
+<link href="{$public}css/jquery.stepy.css{$versionnumber}" rel="stylesheet">
+
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="{$public}js/bootstrap-datetimepicker/css/datetimepicker-custom.css{$versionnumber}" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                {$cat_name}
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+					<a href="{:U('Index/index')}">控制面板</a>
+				</li>
+				<li>
+					<a href="{:U('Mail/index_mail')}">发送站内信</a>
+				</li>
+				<li class="active">{$cat_name}</li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+<div class="row">
+<div class="col-md-12">
+	<section class="panel">
+<header class="panel-heading custom-tab">
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab_1" data-toggle="tab">基础</a></li>
+</ul>
+</header>
+<div class="panel-body">
+<form action="" id="data_form_id" onsubmit="submit_form();return false;" class="form-horizontal ">
+<div class="tab-content">
+	<div class="tab-pane active" id="tab_1">
+		<section class="panel">
+			<div class="panel-body form-horizontal ">
+
+<div class="form-group">
+	<label class="control-label col-md-3">接收人</label>
+	<div class="col-md-7 col-xs-11">
+		<input type="text" name="mem_id" value="所有用户" disabled/>
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-3">标题</label>
+	<div class="col-md-7 col-xs-11">
+			<input class="form-control form-control-inline input-medium" size="16" type="text" name="title" id="title" value=""/>
+			
+	</div>
+</div>
+<div class="form-group">
+	<label class="control-label col-md-3">发送内容</label>
+	<div class="col-md-7 col-xs-11">
+		<textarea name="content" class="form-control form-control-inline input-medium" style="min-height: 80px;">{$info.content}</textarea>
+		<span class="help-block">发送内容</span>
+	</div>
+</div>
+
+		<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10" style="text-align: center;padding-right:20%;">
+					<input name="id" type="hidden" value="{$info.id}">
+					<button class="btn btn-primary" type="submit">保存并关闭</button>
+					<button class="btn btn-default" type="button" onclick="location.href='{:U('index_mail')}'">取消</button>
+				</div>
+			</div>
+			
+		</div>
+			<div class="panel-body">
+				
+				<h4>Tips:</h4>
+				<p>1.备注：<code>接收人、简介、内容</code>必填</p>
+			
+			</div>
+			
+		</section>
+	</div>
+</div>
+</form>
+</div>
+	</section>
+</div>
+</div>
+        </div>
+        <!--body wrapper end-->
+        <include file="Common/footer" />
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.validate.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.stepy.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="{$public}js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js{$versionnumber}"></script>
+
+
+<!--pickers initialization-->
+<script src="{$public}js/pickers-init.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script>
+function submit_form(){
+	layer.load(0, {shade: [0.2,'#616161']});
+	$("#data_form_id").ajaxSubmit({
+		type: "post",
+		beforeSubmit:function(data){
+			$.each(data,function(i){
+				if(data[i]['name'] == 'username' && data[i]['value'] == '' ){
+					layer.closeAll('loading');
+					$("input[name='"+data[i]['name']+"']").focus();
+					return false;
+				}
+			});
+			
+		},
+		success:function(data){
+			layer.closeAll('loading');
+			if(data.status == 1){
+				layer.msg(data.info,{shift:1,time:1500},function(){
+					window.location.href = data.url;
+				});
+			}else{
+				layer.msg(data.info,{shift:6,time:3000});
+			}
+		},
+		dataType:	"json"
+	});
+}
+</script>
+<link href="{$source}kindeditor/themes/default/default.css{$versionnumber}" rel="stylesheet" type="text/css"/>
+<script src="{$source}kindeditor/kindeditor-min.js{$versionnumber}" type="text/javascript"></script>
+<script src="{$source}kindeditor/lang/zh_CN.js{$versionnumber}" type="text/javascript"></script>
+
+<script>
+	KindEditor.ready(function(K) {
+	    window.editor = K.create('#editor_id',{
+	        cssPath:'/Source/kindeditor/plugins/code/prettify.css',
+	        uploadJson:"{:U('Kind/upload_json')}",
+			fileManagerJson: "{:U('Kind/file_manager_json')}",
+	        resizeType :1,
+	        allowPreviewEmoticons : true,
+	        allowImageUpload : true,
+			afterBlur: function(){this.sync();}
+	     });
+		
+		
+	});
+</script>
+
+
+</body>
+</html>

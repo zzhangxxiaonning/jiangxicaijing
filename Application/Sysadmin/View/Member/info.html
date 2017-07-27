@@ -1,0 +1,412 @@
+<include file="Common/title" />
+<link href="{$public}css/jquery.stepy.css{$versionnumber}" rel="stylesheet">
+
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="{$public}js/bootstrap-datetimepicker/css/datetimepicker-custom.css{$versionnumber}" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                {$cat_name}
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+					<a href="{:U('Index/index')}">控制面板</a>
+				</li>
+				<li>
+					<a href="{:U('Member/index')}">用户管理</a>
+				</li>
+				<li class="active">{$cat_name}</li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+<div class="row">
+<div class="col-md-12">
+	<section class="panel">
+		<div class="panel-body">
+			<form action="" id="data_form_id" onsubmit="submit_form();return false;" class="form-horizontal ">
+
+
+				<div class="form-group">
+					<label class="control-label col-md-3">真实姓名</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="username" id="username" value="{$info.username}"/>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">手机号</label>
+					<div class="col-md-7 col-xs-11">
+							<input class="form-control form-control-inline input-medium" size="16" type="text" name="phone" id="phone" value="{$info.phone}"/>
+						
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-md-3">密码</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="password" name="password"/>
+						<span class="help-block">不填则密码保持不变</span>
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">性别</label>
+					<div class="col-md-4 col-xs-11">
+
+						<div class="radio col-md-3">
+							<label>
+								<input name="sex" value="1" type="radio" <eq name="info.sex" value="1"> checked</eq> >
+								男
+							</label>
+						</div>
+
+						<div class="radio col-md-3">
+							<label>
+								<input name="sex" value="2" type="radio"  <eq name="info.sex" value="2"> checked</eq> >
+								女
+							</label>
+						</div>
+
+						<!--<div class="radio col-md-3">-->
+							<!--<label>-->
+								<!--<input name="sex" value="0" type="radio"  <eq name="info.sex" value="0"> checked</eq> >-->
+								<!--保密-->
+							<!--</label>-->
+						<!--</div>-->
+						<!--<span class="help-block">默认为保密</span>-->
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">会员类型</label>
+					<div class="col-md-4 col-xs-11">
+
+						<div class="radio col-md-3">
+							<label>
+								<input name="type" value="1" type="radio" <if condition="($info['type'] eq 1) OR ($info['type'] eq 0)"> checked</if> >
+								学生
+							</label>
+						</div>
+
+						<div class="radio col-md-3">
+							<label>
+								<input name="type" value="2" type="radio"  <eq name="info.type" value="2"> checked</eq> >
+								教师
+							</label>
+						</div>
+						<span class="help-block">默认为学生</span>
+						<!--<div class="radio col-md-3">-->
+						<!--<label>-->
+						<!--<input name="sex" value="0" type="radio"  <eq name="info.sex" value="0"> checked</eq> >-->
+						<!--保密-->
+						<!--</label>-->
+						<!--</div>-->
+						<!--<span class="help-block">默认为保密</span>-->
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">学号</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="student_id" value="{$info.student_id}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">职工号</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="worker_id" value="{$info.worker_id}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">院系</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="college" value="{$info.college}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">专业</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="specialty" value="{$info.specialty}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">班级</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="class" value="{$info.class}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">班主任</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="teacher" value="{$info.teacher}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">职位</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="position" value="{$info.position}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">单位/机构</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="organ" value="{$info.organ}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">邮箱</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="email" id="email" value="{$info.email}"/>
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">个人介绍</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="info" value="{$info.info}"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">余额</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="balance" value="{$info.balance}"/>
+					</div>
+				</div>
+				<!--<div class="form-group">-->
+					<!--<label class="control-label col-md-3">银行名称</label>-->
+					<!--<div class="col-md-7 col-xs-11">-->
+						<!--<input class="form-control form-control-inline input-medium" size="16" type="text" name="card" value="{$info.bank_name}"/>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="form-group">-->
+					<!--<label class="control-label col-md-3">开户行</label>-->
+					<!--<div class="col-md-7 col-xs-11">-->
+						<!--<input class="form-control form-control-inline input-medium" size="16" type="text" name="card" value="{$info.bank_open}"/>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="form-group">-->
+					<!--<label class="control-label col-md-3">银行卡号</label>-->
+					<!--<div class="col-md-7 col-xs-11">-->
+						<!--<input class="form-control form-control-inline input-medium" size="16" type="text" name="card" value="{$info.bank_card}"/>-->
+					<!--</div>-->
+				<!--</div>-->
+
+				<div class="form-group">
+					<label class="control-label col-md-3">头像</label>
+					<div class="col-md-7 col-xs-11">
+						<div class="input-group m-bot15">
+							<input type="text" class="form-control" name="thumb" id="thumb_input" value="{$info.thumb}">
+							<span class="input-group-btn">
+								<button class="btn btn-default enet360_upload_images" var_id="thumb" type="button">上传</button>
+							</span>
+						</div>
+						<div class="fileupload fileupload-new">
+							<div class="fileupload-new thumbnail" style="max-width: 100%; max-height: 100%;">
+								<img id="thumb_img" src="{$info.thumb|default='/Uploads/noimg.png'|Thumb}" style="width:100px;height:auto;"/>
+							</div>
+						</div>
+						<span class="help-block">请上传头像</span>
+
+					</div>
+				</div>
+				
+				<!--<div class="form-group">
+					<label class="control-label col-md-3">所在地</label>
+					<div class="col-md-7 col-xs-11">
+						<select name="province" id="province" class="form-control addressArea">{$sheng}</select>
+						<select name="city" id="city" class="form-control addressArea">{$shi}</select>
+						<select name="area" id="area" class="form-control addressArea">{$qu}</select>
+
+					</div>
+					<style>
+						.addressArea{
+							display:block;
+							float:left;
+							max-width: 20%;
+							margin-left: 10px;
+						}
+						#province{
+							margin-left: 0;
+						}
+					</style>
+				</div>-->
+
+				<div class="form-group">
+					<label class="control-label col-md-3">显示状态</label>
+					<div class="col-md-4 col-xs-11">
+
+							<div class="radio col-md-6">
+								<label>
+									<input name="status" value="1" type="radio" <eq name="info.status" value="1"> checked</eq> >
+									启用
+								</label>
+							</div>
+
+							<div class="radio col-md-6">
+								<label>
+									<input name="status" value="0" type="radio"  <eq name="info.status" value="0"> checked</eq> >
+									禁用
+								</label>
+							</div>
+
+						<span class="help-block"></span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10" style="text-align:center;">
+						<input name="id" type="hidden" value="{$info.id}">
+                        <button class="btn btn-primary" type="submit">保存并关闭</button>
+                        <button class="btn btn-default" type="button" onclick="location.href='{:U('index')}'">取消</button>
+                    </div>
+                </div>
+			</form>
+		</div>
+	</section>
+</div>
+
+</div>
+        </div>
+        <!--body wrapper end-->
+        <include file="Common/footer" />
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.validate.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.stepy.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="{$public}js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js{$versionnumber}"></script>
+
+
+<!--pickers initialization-->
+<script src="{$public}js/pickers-init.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script>
+function submit_form(){
+	var phone = $("#phone").val();
+	var email = $("#email").val();
+	var myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/;
+	var myreg_email = /\w+@(\w|\d)+\.\w{2,3}/i;
+//	console.log(phone);
+	if(phone != ''){
+		if(!myreg.test(phone)){
+			layer.msg('手机号格式不正确',{time:1500},function(){
+				$("#phone").focus();
+			});
+			return false;
+		}
+	}
+	if(email != ''){
+		if(!myreg_email.test(email)){
+			layer.msg('邮箱格式不正确',{time:1500},function(){
+				$("#email").focus();
+			});
+			return false;
+		}
+	}
+	
+	layer.load(0, {shade: [0.2,'#616161']});
+	$("#data_form_id").ajaxSubmit({
+		type: "post",
+		beforeSubmit:function(data){
+		console.log(data);false;
+			$.each(data,function(i){
+				if(data[i]['name'] == 'nickname' && data[i]['value'] == '' ){
+					layer.closeAll('loading');
+					$("input[name='"+data[i]['name']+"']").focus();
+					return false;
+				}
+			});
+			
+		},
+		success:function(data){
+			layer.closeAll('loading');
+			if(data.status == 1){
+				layer.msg(data.info,{shift:1,time:1500},function(){
+					window.location.href = data.url;
+				});
+			}else{
+				layer.msg(data.info,{shift:6,time:3000});
+			}
+		},
+		dataType:	"json"
+	});
+}
+</script>
+
+<script>
+/*城市三级联动*/
+	/*$(function(){
+		$("#province").change(function(){
+
+			$.post("{:U('Ajaxjson/post_area')}",{"area_id":$(this).find(":checked").val()},function(data){
+				$("#city").html(data);
+				$("#area").html("<option value='0'>请选择</option>");
+			});
+			});
+			$("#city").change(function(){
+				$.post("{:U('Ajaxjson/post_area')}",{"area_id":$(this).find(":checked").val()},function(data){
+					$("#area").html(data);
+				});
+			});
+
+	})*/
+</script>
+<!--/**编辑器 kindeditor **/-->
+<script type="text/javascript">
+	var Kind_upload_json = "{:U('Kind/upload_json')}";
+	var Kind_file_manager_json = "{:U('Kind/file_manager_json')}";
+	//var Kind_DiyImgName = 'activity';
+</script>
+<link href="{$source}kindeditor/themes/default/default.css{$versionnumber}" rel="stylesheet" type="text/css"/>
+<script src="{$source}kindeditor/kindeditor-min.js{$versionnumber}" type="text/javascript"></script>
+<script src="{$source}kindeditor/lang/zh_CN.js{$versionnumber}" type="text/javascript"></script>
+<script src="{$source}kindeditor/config.js{$versionnumber}" type="text/javascript"></script>
+</body>
+</html>

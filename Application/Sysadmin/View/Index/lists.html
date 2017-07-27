@@ -1,0 +1,185 @@
+<include file="Common/title" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                Dashboard
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="active"> My Dashboard </li>
+            </ul>
+            <div class="state-info">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>yearly expense</span>
+                            <h3 class="red-txt">$ 45,600</h3>
+                        </div>
+                        <div id="income" class="chart-bar"></div>
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>yearly  income</span>
+                            <h3 class="green-txt">$ 45,600</h3>
+                        </div>
+                        <div id="expense" class="chart-bar"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <section class="panel">
+                    <header class="panel-heading no-border">
+                        Border Table
+                    </header>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td rowspan="2">1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@TwBootstrap</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+							<tr>
+                                <td>4</td>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+							<tr>
+                                <td>5</td>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+							<tr>
+                                <td>6</td>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+					
+					<div class="panel-body">
+						<h4>Tips:</h4>
+						<p>Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+
+						<div class="">
+							<ul class="pagination">
+								<li><a href="#">«</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li class="active"><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">»</a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+            </div>
+            
+
+            
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <include file="Common/footer" />
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--Sparkline Chart-->
+<script src="{$public}js/sparkline/jquery.sparkline.js{$versionnumber}"></script>
+<script src="{$public}js/sparkline/sparkline-init.js{$versionnumber}"></script>
+
+<!--icheck -->
+<script src="{$public}js/iCheck/jquery.icheck.js{$versionnumber}"></script>
+<script src="{$public}js/icheck-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--Morris Chart-->
+<script src="{$public}js/morris-chart/morris.js{$versionnumber}"></script>
+<script src="{$public}js/morris-chart/raphael-min.js{$versionnumber}"></script>
+
+<!--Calendar-->
+<script src="{$public}js/calendar/clndr.js{$versionnumber}"></script>
+<script src="{$public}js/calendar/evnt.calendar.init.js{$versionnumber}"></script>
+<script src="{$public}js/calendar/moment-2.2.1.js{$versionnumber}"></script>
+<script src="{$public}js/underscore-min.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+
+<!--Dashboard Charts-->
+<script src="{$public}js/dashboard-chart-init.js{$versionnumber}"></script>
+
+
+</body>
+</html>

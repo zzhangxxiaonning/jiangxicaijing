@@ -1,0 +1,274 @@
+<include file="Common/title" />
+<!--external css-->
+  <link rel="stylesheet" type="text/css" href="{$public}js/fuelux/css/tree-style.css{$versionnumber}" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        
+        <!-- page heading end-->
+
+        <div class="wrapper">
+            <div class="mail-box">
+                <aside class="mail-nav mail-nav-bg-color" >
+                    <header class="header"> <h4>栏目</h4> </header>
+                    <div class="mail-nav-body">
+                        <div class="panel">
+							<div class="panel-body">
+								<div id="FlatTree4" class="tree tree-solid-line">
+									<div class = "tree-folder" style="display:none;">
+										<div class="tree-folder-header">
+											<i class="fa fa-folder"></i>
+											<div class="tree-folder-name"></div>
+										</div>
+										<div class="tree-folder-content"></div>
+										<div class="tree-loader" style="display:none"></div>
+									</div>
+									<div class="tree-item" style="display:none;">
+										<i class="tree-dot"></i>
+										<div class="tree-item-name"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                </aside>
+                <section class="mail-box-info">
+                    <header class="header">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa fa-chevron-left"></i>
+                            </button>
+                            <button class="btn btn-sm btn-primary" type="button">
+                                <i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-primary"><i class="fa fa-refresh"></i></button>
+                            </div>
+                            <div class="btn-group select">
+                                <button data-toggle="dropdown" class="btn btn-primary btn-sm dropdown-toggle">
+                                    <span style="width: 70px;" class="dropdown-label">Filter</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu text-left text-sm">
+                                    <li><a href="#">Read</a></li>
+                                    <li><a href="#">Unread</a></li>
+                                    <li><a href="#">Starred</a></li>
+                                    <li><a href="#">Unstarred</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </header>
+
+                    <section class="mail-list" style="height:auto;">
+                        <ul class="list-group ">
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span> <span class="label label-sm btn-success">normal</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user1.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac  </span> <span class="label label-sm btn-danger">urgent</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user2.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus. </span> <span class="label label-sm btn-warning">error</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user3.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span>  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user4.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac  </span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user1.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus. </span> <span class="label label-sm btn-warning">error</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user5.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span>  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user1.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac   </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus.  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user3.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span> <span class="label label-sm btn-success">normal</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user4.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac  </span> <span class="label label-sm btn-danger">urgent</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/photos/user2.png"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus. </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span>  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac  </span>  </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus. </span> <span class="label label-sm btn-warning">error</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">15 April</small> <strong>John Doe</strong>  <span>Donec ultrices faucibus rutrum. Phasellus sodales </span> <span class="label label-sm btn-success">normal</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">10 May</small> <strong>Jane Doe</strong> <span>Phasellus sodales vulputate urna, vel accumsan augue egestas ac  </span> <span class="label label-sm btn-danger">urgent</span> </a>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-left chk">
+                                    <input type="checkbox"/>
+                                </span>
+                                <a class="thumb pull-left" href="#"> <img src="images/avatar-mini.jpg"> </a>
+                                <a class="" href="mail_view.html"> <small class="pull-right text-muted">3 June</small> <strong>Jonathan Smith</strong>  <span>Porttitor eu consequat risus. </span> <span class="label label-sm btn-warning">error</span> </a>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                </section>
+            </div>
+
+        </div>
+        <!--footer section start-->
+        <include file="Common/footer" />
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--Sparkline Chart-->
+<script src="{$public}js/sparkline/jquery.sparkline.js{$versionnumber}"></script>
+<script src="{$public}js/sparkline/sparkline-init.js{$versionnumber}"></script>
+
+<!--icheck -->
+<script src="{$public}js/iCheck/jquery.icheck.js{$versionnumber}"></script>
+<script src="{$public}js/icheck-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--Morris Chart-->
+<script src="{$public}js/morris-chart/morris.js{$versionnumber}"></script>
+<script src="{$public}js/morris-chart/raphael-min.js{$versionnumber}"></script>
+
+<!--Calendar-->
+<script src="{$public}js/calendar/clndr.js{$versionnumber}"></script>
+<script src="{$public}js/calendar/evnt.calendar.init.js{$versionnumber}"></script>
+<script src="{$public}js/calendar/moment-2.2.1.js{$versionnumber}"></script>
+<script src="{$public}js/underscore-min.js{$versionnumber}"></script>
+
+<!--tree-->
+<script src="{$public}js/fuelux/js/tree.min.js{$versionnumber}"></script>
+<script src="{$public}js/tree-init.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+
+<!--Dashboard Charts-->
+<script src="{$public}js/dashboard-chart-init.js{$versionnumber}"></script>
+<script>
+    jQuery(document).ready(function() {
+        TreeView.init();
+    });
+</script>
+
+</body>
+</html>

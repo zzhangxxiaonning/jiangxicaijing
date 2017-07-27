@@ -1,0 +1,144 @@
+<include file="Common/title" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+<!-- left side start-->
+<include file="Common/left" />
+
+<!-- main content start-->
+<div class="main-content" >
+
+<!-- header section start-->
+<include file="Common/header" />
+
+<!-- page heading start-->
+<div class="page-heading">
+	<h3>
+		广告位管理
+	</h3>
+	<ul class="breadcrumb">
+		<li>
+			<a href="{:U('Index/index')}">控制面板</a>
+		</li>
+		<li class="active">广告管理</li>
+	</ul>
+	<div class="state-info">
+		<include file="Common/chart_bar" />
+	</div>
+</div>
+<!-- page heading end-->
+
+<!--body wrapper start-->
+<div class="wrapper">
+	<div class="row">
+<section class="panel" style="margin-bottom:0px;">
+	<header class="panel-heading">
+		广告位列表
+		<span class="tools pull-right">
+			<a href="javascript:void(0);" class="fa  <eq name="is_service" value="0"> fa-chevron-up<else/> fa-chevron-down</eq>"> 搜索</a> &nbsp;
+			<button class="btn btn-default" type="button" onclick="location.reload()"><i class="fa fa-refresh"></i> 刷新</button>
+			<button class="btn btn-info" type="button" onclick="location.href='{:U('position_add')}'"><i class="fa fa-plus"></i> 添加</button>
+		</span>
+	</header>
+	<div class="panel-body" style=" <eq name="is_service" value="0">display: none;<else/>display: block;</eq>">
+		<form action="{:U('position_lists')}" method="get">
+			<div class="col-md-2">	
+				<div class="input-group panel">
+					<span class="input-group-addon">名称</span>
+					<input type="text" name="name" value="{:I('get.name')}" class="form-control" placeholder="">
+				</div>
+			</div>
+			<div class="col-md-1">	
+				<button class="btn btn-default" type="submit"><i class="fa fa-search"></i> 查找</button>
+			</div>
+		</form>
+	</div>
+</section>
+		<section class="panel">
+			<div class="panel-body">
+
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>名称</th>
+		<th>描述</th>
+		<th>图片尺寸</th>
+		<th>数量</th>
+		<th>操作</th>
+	</tr>
+	</thead>
+	<tbody>
+	<volist name="lists" id="vo">
+	<tr>
+		<td>{$vo.id}</td>
+		<td>{$vo.name}</td>
+		<td>{$vo.info|nl2br}</td>
+		<td>{$vo.size_info|nl2br}</td>
+		<td>总共：{$vo.num}<br>展示：<code>{$vo.num_true}</code></td>
+		<td>
+			<a href="{:U('position_edit',array('id'=>$vo['id']))}" class="btn btn-default btn-sm" id="add-sticky"><i class="fa fa-edit"></i> 编辑</a>
+			<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_position',array('id'=>$vo['id']))}" title="确定是否删除“{$vo.name}”删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
+		</td>
+	</tr>
+	</volist>
+   
+	</tbody>
+</table>
+			</div>
+			
+			<div class="panel-body">
+				<div class="">
+					<ul class="pagination">{$page}</ul>
+				</div>
+				<h4>Tips:</h4>
+				<p>1.数量<code>展示</code>表示现在广告位正在展示的广告数量；数量<code>总共</code>表示该广告位一共有多少广告</p>
+				
+			</div>
+		</section>
+	</div>
+	
+
+	
+</div>
+<!--body wrapper end-->
+
+<!--footer section start-->
+<include file="Common/footer" />
+
+
+</div>
+<!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--icheck -->
+<script src="{$public}js/iCheck/jquery.icheck.js{$versionnumber}"></script>
+<script src="{$public}js/icheck-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script src="{$public}js/common.js{$versionnumber}"></script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- header section start-->
+<div class="header-section">
+
+	<!--toggle button start-->
+	<a class="toggle-btn"><i class="fa fa-bars"></i></a>
+	<a class="toggle-btn" href="{:U('/Index/index')}" style="width:auto;" target="_blank">网站首页</a>
+	<a class="toggle-btn" href="{:U('Index/clear_cache')}" style="width:auto;" target="_blank">缓存清理</a>
+	<!--toggle button end-->
+	<!--notification menu start -->
+	<div class="menu-right">
+		<ul class="notification-menu">
+			<li>
+				<a href="javascript:void(0);" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					<!--img src="{$public}images/photos/user-avatar.png" alt="" /-->
+					{$admin_username}
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+					<!--li><a href="{:U('Index/profile')}"><i class="fa fa-user"></i> 个人资料</a></li-->
+					<li><a href="{:U('Index/onlogin')}"><i class="fa fa-sign-out"></i> 退出登陆</a></li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>
+	<!--notification menu end -->
+</div>
+<!-- header section end-->

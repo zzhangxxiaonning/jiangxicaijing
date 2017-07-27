@@ -1,0 +1,398 @@
+<include file="Common/title" />
+<link href="{$public}css/jquery.stepy.css{$versionnumber}" rel="stylesheet">
+
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="{$public}js/bootstrap-datetimepicker/css/datetimepicker-custom.css{$versionnumber}" />
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                {$cat_name}
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+					<a href="{:U('Index/index')}">控制面板</a>
+				</li>
+				<li>
+					<a href="{:U('Flashrec/act_index')}">录播管理</a>
+				</li>
+				<li class="active">{$cat_name}</li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+<div class="row">
+<div class="col-md-12">
+	<section class="panel">
+<header class="panel-heading custom-tab">
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab_1" data-toggle="tab">基础</a></li>
+	<li><a href="#tab_2" data-toggle="tab">内容</a></li>
+</ul>
+</header>
+<div class="panel-body">
+<form action="" id="data_form_id" onsubmit="submit_form();return false;" class="form-horizontal ">
+<div class="tab-content">
+	<div class="tab-pane active" id="tab_1">
+		<section class="panel">
+			<div class="panel-body form-horizontal ">
+
+				<div class="form-group">
+					<label class="control-label col-md-3">标题</label>
+					<div class="col-md-7 col-xs-11">
+							<input class="form-control form-control-inline input-medium" size="16" type="text" name="title" id="title" value="{$info.title}"/>
+							<span class="help-block">标题不可为空</span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">级别</label>
+					<div class="col-md-7 col-xs-11">
+						<select name="rank_id" id="rank_id" class="form-control form-control-inline input-medium">
+							<option value="0" >请选择级别</option>
+
+							<volist name="rank_list" id="co">
+								<option value="{$co.id}" <if condition="$info['rank_id'] eq $co['id']"> selected</if>>{$co.catname}</option>
+							</volist>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">审批机构</label>
+					<div class="col-md-7 col-xs-11">
+						<select name="approval_id" class="form-control form-control-inline input-medium approver">
+							<option value="0">请选择审批人机构</option>
+
+							<volist name="app_list" id="co">
+								<option value="{$co.id}" <if condition="$info['approval_id'] eq $co['id']"> selected</if>>{$co.catname}</option>
+							</volist>
+
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">审批人</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium approver_id" size="16" style="display:none;" name="approver_id" value="{$info.approver_id}"/>
+						<input class="form-control form-control-inline input-medium approver_name" size="16" type="text" value="{$info.approver_name}" disabled/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">观看人数（人）</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="onclick" value="{$info.onclick}"/>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">报名费（元）</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="money" value="{$info.money}"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">录播时间</label>
+
+						<div class="col-md-7 col-xs-11 input-group input-large custom-date-range" data-date="2013-07-13" data-date-format="yyyy-mm-dd" style="padding-left: 15px;padding-right: 15px;">
+							<input type="text" class="form-control dpd1" name="start_time" value="<notempty name="info.start_time">{$info.start_time|date='Y-m-d H:i:s',###}</notempty>">
+						</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">录播链接</label>
+					<div class="col-md-7 col-xs-11">
+						<input class="form-control form-control-inline input-medium" size="16" type="text" name="url" id="url" value="{$info.url}"/>
+					</div>
+					<span class="help-block"><a href="{$info.url}" target="_blank">查看</a></span>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3">缩略图</label>
+					<div class="col-md-7 col-xs-11">
+						<div class="input-group m-bot15">
+
+							<input type="text" class="form-control" name="thumb" id="thumb_input" value="{$info.thumb}">
+							<span class="input-group-btn">
+								<button class="btn btn-default enet360_upload_images" var_id="thumb" type="button">上传</button>
+							</span>
+						</div>
+						<span class="help-block">宽高157px*218px（比例1:1.4）</span>
+						<div class="fileupload fileupload-new">
+							<div class="fileupload-new thumbnail" style="max-width: 100%; height: auto;">
+								<img id="thumb_img" src="{$info.thumb|default='/Uploads/noimg.png'|Thumb}" alt="" style="min-width:157px;height:218px;"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">宣传图片</label>
+					<div class="col-md-7 col-xs-11">
+						<div class="input-group m-bot15">
+							<input type="button" id="J_selectImage" value="批量上传" />
+						</div>
+						<div id="J_imageView">
+							<notempty name="img">
+								<volist name="img" id="v">
+								<span><img src="{$v}" class="img_upload" style="width:auto;max-height:100px;"/><input type="hidden" name="img[]" value="{$v}" /></span>
+								</volist>
+							</notempty>
+						</div>
+
+					<style>
+						.img_upload{
+							diaplay:block;
+							border:1px solid #d5d5d5;
+							width: 150px;
+							height: 150px;
+							margin-left: 10px;
+							cursor:pointer;
+						}
+					</style>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">报名审核</label>
+					<div class="col-md-4 col-xs-11">
+
+						<div class="radio col-md-6">
+							<label>
+								<input name="apply_is" value="1" type="radio" <if condition="($info['apply_is'] eq 1) OR ($info['apply_is'] eq 0)"> checked</if> >
+								审核
+							</label>
+						</div>
+
+						<div class="radio col-md-6">
+							<label>
+								<input name="apply_is" value="0" type="radio"  <eq name="info.apply_is" value="0"> checked</eq> >
+								不审核
+							</label>
+						</div>
+						<span class="help-block">报名是否需要审核</span>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">通过状态</label>
+					<div class="col-md-4 col-xs-11">
+
+						<div class="radio col-md-4">
+							<label>
+
+								<input name="examine" value="1" type="radio" <if condition="($info['examine'] eq 1) OR ($info['examine'] eq 0)"> checked</if> >
+								待审核
+							</label>
+						</div>
+
+						<div class="radio col-md-4">
+							<label>
+								<input name="examine" value="2" type="radio"  <eq name="info.examine" value="2"> checked</eq> >
+								审核通过
+							</label>
+						</div>
+
+						<div class="radio col-md-4">
+							<label>
+								<input name="examine" value="3" type="radio"  <eq name="info.examine" value="3"> checked</eq> >
+								审核不通过
+							</label>
+						</div>
+
+						<span class="help-block"></span>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3">显示状态</label>
+					<div class="col-md-4 col-xs-11">
+
+							<div class="radio col-md-6">
+								<label>
+									<input name="status" value="1" type="radio" <eq name="info.status" value="1"> checked</eq> >
+									已启用
+								</label>
+							</div>
+
+							<div class="radio col-md-6">
+								<label>
+									<input name="status" value="0" type="radio"  <eq name="info.status" value="0"> checked</eq> >
+									已禁用
+								</label>
+							</div>
+
+						<span class="help-block"></span>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10">
+						<input name="id" type="hidden" value="{$info.id}">
+						<button class="btn btn-primary" type="submit">保存并关闭</button>
+						<button class="btn btn-default" type="button" onclick="location.href='{:U('act_index')}'">取消</button>
+					</div>
+				</div>
+
+			</div>
+		</section>
+	</div>
+	<div class="tab-pane" id="tab_2">
+		<section class="panel">
+			<div class="panel-body form-horizontal " style="border: 1px solid #d5d5d5;">
+
+				<div class="form-group">
+					<div class="col-md-12 col-xs-11" id="cimg">
+
+						<textarea name="content" id="editor_id" width="100%" style="width: 100%;height:400px;" class=" enet360_content_simple">{$info.content}</textarea>
+						<span class="help-block"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10" style="text-align:center;padding-right:20%;">
+						<input name="id" type="hidden" value="{$info.id}">
+						<button class="btn btn-primary" type="submit">保存并关闭</button>
+						<button class="btn btn-default" type="button" onclick="location.href='{:U('act_index')}'">取消</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>
+</form>
+</div>
+	</section>
+</div>
+</div>
+        </div>
+        <!--body wrapper end-->
+        <include file="Common/footer" />
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.validate.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.stepy.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="{$public}js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js{$versionnumber}"></script>
+
+
+<!--pickers initialization-->
+<script src="{$public}js/pickers-init.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script>
+function submit_form(){
+	var title = $('#title').val();
+	var rank_id = $('#rank_id').val();
+	var url = $('#url').val();
+	if(title == ''){
+		layer.msg('请输入标题',{time:1500},function(){$('#title').focus()});
+		return false;
+	}
+	if(url == ''){
+		layer.msg('请输入录播链接',{time:1500},function(){$('#').focus()});
+		return false;
+	}
+
+	if(rank_id == 0){
+		layer.msg('请选择级别',{time:1500},function(){$('#rank_id').focus()});
+		return false;
+	}
+
+	layer.load(0, {shade: [0.2,'#616161']});
+	$("#data_form_id").ajaxSubmit({
+		type: "post",
+		beforeSubmit:function(data){
+			$.each(data,function(i){
+				if(data[i]['name'] == 'title' && data[i]['value'] == '' ){
+					layer.closeAll('loading');
+					$("input[name='"+data[i]['name']+"']").focus();
+					return false;
+				}
+			});
+			
+		},
+		success:function(data){
+			layer.closeAll('loading');
+			if(data.status == 1){
+				layer.msg(data.info,{shift:1,time:1500},function(){
+					window.location.href = data.url;
+				});
+			}else{
+				layer.msg(data.info,{shift:6,time:3000});
+			}
+		},
+		dataType:	"json"
+	});
+}
+
+</script>
+<script>
+	$(document).on('change','.approver',function(){
+		var val = $(this).val();
+
+		$.ajax({
+			type: 'post',
+			url: "{:U('approver')}",
+			data: {
+				'val':val,
+			},
+			dataType:'json',
+			success: function(data) {
+			console.log(data);
+
+				if(data.status == 1){
+					$('.approver_id').val(data.approver_id);
+					$('.approver_name').val(data.approver_name);
+				}else{
+					layer.msg(data.info,{time:1500},function(){
+						window.location.reload();
+					});
+					return false;
+				}
+			}
+		});
+
+	});
+
+</script>
+
+</body>
+<!--/**编辑器 kindeditor **/-->
+<script type="text/javascript">
+	var Kind_upload_json = "{:U('Kind/upload_json')}";
+	var Kind_file_manager_json = "{:U('Kind/file_manager_json')}";
+	//var Kind_DiyImgName = 'activity';
+</script>
+<link href="{$source}kindeditor/themes/default/default.css{$versionnumber}" rel="stylesheet" type="text/css"/>
+<script src="{$source}kindeditor/kindeditor-min.js{$versionnumber}" type="text/javascript"></script>
+<script src="{$source}kindeditor/lang/zh_CN.js{$versionnumber}" type="text/javascript"></script>
+<script src="{$source}kindeditor/config.js{$versionnumber}" type="text/javascript"></script>
+<include file="Common/date" />
+</html>

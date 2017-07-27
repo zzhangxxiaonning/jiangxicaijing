@@ -1,0 +1,189 @@
+<include file="Common/title" />
+</head>
+<style>
+	.sort{
+		
+		width:30px;
+	}
+</style>
+<body class="sticky-header">
+
+<section>
+<!-- left side start-->
+<include file="Common/left" />
+
+<!-- main content start-->
+<div class="main-content" >
+
+<!-- header section start-->
+<include file="Common/header" />
+
+<!-- page heading start-->
+<div class="page-heading">
+	<h3>
+		{$cat_name}
+	</h3>
+	<ul class="breadcrumb">
+		<li>
+			<a href="{:U('Index/index')}">控制面板</a>
+		</li>
+		<li class="active">属性管理</li>
+	</ul>
+
+</div>
+<!-- page heading end-->
+
+<!--body wrapper start-->
+<div class="wrapper">
+	<div class="row">
+<section class="panel" style="margin-bottom:0px;">
+	<header class="panel-heading">
+		{$cat_name}列表
+		<span class="tools pull-right">
+			<button class="btn btn-default" type="button" onclick="location.reload()"><i class="fa fa-refresh"></i> 刷新</button>
+			<button class="btn btn-info" type="button" onclick="location.href='{:U('attr_add')}'"><i class="fa fa-plus"></i> 添加</button>
+		</span>
+	</header>
+</section>
+		<section class="panel">
+			<div class="panel-body">
+
+<table class="table table-bordered">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>名称</th>
+		<th>状态</th>
+		<th>排序</th>
+		<!--<th>管理员</th>-->
+		<th>操作</th>
+	</tr>
+	</thead>
+	<form name="form1" id="form_id" method="post" action="{:U('Actattr/sortlists')}">
+	<tbody>
+	<volist name="lists" id="vo">
+		<tr>
+			<td>{$vo.id}</td>
+			<td>{$vo.catname}</td>
+			<td>
+				<eq name="vo.status" value="1">
+					<a href="{:U('Actattr/editnav',array('id'=>$vo['id']))}" class="label label-success label-mini" title="确认是否修改该状态">已启用</a>
+				<else />
+					<a href="{:U('Actattr/editnav',array('id'=>$vo['id']))}" class="label label-warning label-mini" title="确认是否修改该状态">已禁用</a>
+				</eq>
+			</td>
+			<td>
+				<input type="text" name="sort['{$vo.id}']" class="sort" value="{$vo.sort}">
+			</td>
+			<td>
+				<a href="{:U('attr_edit',array('id'=>$vo['id']))}" class="btn btn-default btn-sm" id="add-sticky"><i class="fa fa-edit"></i> 编辑</a>
+				<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_position',array('id'=>$vo['id']))}" title="确定是否删除“{$vo.catname}”删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
+			</td>
+		</tr>
+		<!--二级分类-->
+		<volist name="vo.son" id="vv">
+		<tr>
+			<td>{$vv.id}</td>
+			<td>|- -└>{$vv.catname}</td>
+			<td>
+				<eq name="vv.status" value="1">
+					<a href="{:U('Actattr/editnav',array('id'=>$vv['id']))}" class="label label-success label-mini" title="确认是否修改该状态">已启用</a>
+				<else />
+					<a href="{:U('Actattr/editnav',array('id'=>$vv['id']))}" class="label label-warning label-mini" title="确认是否修改该状态">已禁用</a>
+				</eq>
+			</td>
+			<td>
+				<input type="text" name="sort['{$vv.id}']" class="sort" value="{$vv.sort}">
+			</td>
+			<td>
+				<a href="{:U('attr_edit',array('id'=>$vv['id']))}" class="btn btn-default btn-sm" id="add-sticky"><i class="fa fa-edit"></i> 编辑</a>
+				<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_position',array('id'=>$vv['id']))}" title="确定是否删除“{$vv.catname}”删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
+			</td>
+		</tr>
+			<!--三级分类-->
+			<volist name="vv.three" id="vvv">
+				<tr>
+					<td>{$vvv.id}</td>
+					<td>|- - - |- - -└>{$vvv.catname}</td>
+					<td>
+						<eq name="vvv.status" value="1">
+							<a href="{:U('Actattr/editnav',array('id'=>$vvv['id']))}" class="label label-success label-mini" title="确认是否修改该状态">已启用</a>
+							<else />
+							<a href="{:U('Actattr/editnav',array('id'=>$vvv['id']))}" class="label label-warning label-mini" title="确认是否修改该状态">已禁用</a>
+						</eq>
+					</td>
+					<td>
+						<input type="text" name="sort['{$vvv.id}']" class="sort" value="{$vvv.sort}">
+					</td>
+					<td>
+						<a href="{:U('attr_edit',array('id'=>$vvv['id']))}" class="btn btn-default btn-sm" id="add-sticky"><i class="fa fa-edit"></i> 编辑</a>
+						<a href="javascript:void(0);" class="btn btn-default btn-sm jQ_delete_reload" data-href="{:U('del_position',array('id'=>$vvv['id']))}" title="确定是否删除“{$vvv.catname}”删除以后将无法恢复"><i class="fa fa-times"></i> 删除</a>
+					</td>
+				</tr>
+				</volist>
+
+
+		</volist>
+	</volist>
+   <tr>
+		<td colspan="5">
+		<button class="btn btn-mini jqUrlSubmitReload" style="cursor:pointer;" ><i class="icon-random"></i>更新排序</button>
+		</td>
+	</tr>
+	</tbody>
+	</form>
+</table>
+			</div>
+			
+			<div class="panel-body">
+				<div class="">
+					<ul class="pagination">{$page}</ul>
+				</div>
+				<h4>Tips:</h4>
+				<p>1.状态<code>已启用</code>该类型展示；<code>已禁用</code>该类型不展示</p>
+				
+			</div>
+		</section>
+	</div>
+	
+
+	
+</div>
+<!--body wrapper end-->
+
+<!--footer section start-->
+<include file="Common/footer" />
+
+
+</div>
+<!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--icheck -->
+<script src="{$public}js/iCheck/jquery.icheck.js{$versionnumber}"></script>
+<script src="{$public}js/icheck-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script src="{$public}js/common.js{$versionnumber}"></script>
+</body>
+</html>

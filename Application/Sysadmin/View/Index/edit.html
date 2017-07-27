@@ -1,0 +1,196 @@
+<include file="Common/title" />
+<link href="{$public}css/jquery.stepy.css{$versionnumber}" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                Dashboard
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="active"> My Dashboard </li>
+            </ul>
+            <div class="state-info">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>yearly expense</span>
+                            <h3 class="red-txt">$ 45,600</h3>
+                        </div>
+                        <div id="income" class="chart-bar"></div>
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="summary">
+                            <span>yearly  income</span>
+                            <h3 class="green-txt">$ 45,600</h3>
+                        </div>
+                        <div id="expense" class="chart-bar"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="square-widget">
+                        <div class="widget-container">
+                            <div class="stepy-tab">
+                            </div>
+                            <form id="default" class="form-horizontal">
+                                <fieldset title="Initial Info">
+                                    <legend>Personal Information</legend>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Full Name</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Full Name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Email Address</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Email Address" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">User Name</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Username" class="form-control">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset title="Contact Info">
+                                    <legend>Contact Details</legend>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Phone</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Phone" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Mobile</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Mobile" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Address</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea rows="5" cols="60" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset title="Billing Details">
+                                    <legend>Billing Details</legend>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Billing Name 1</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Billing Name 1" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Billing Name 2</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="text" placeholder="Billing Name 2" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-2 control-label">Status</label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea rows="5" cols="60" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset title="Final Step">
+                                    <legend>Final Step Information</legend>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <p>Congratulations This is the Final Step</p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <button class="btn btn-info finish">
+                                    Finish </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <include file="Common/footer" />
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.validate.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.stepy.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--Sparkline Chart-->
+<script src="{$public}js/sparkline/jquery.sparkline.js{$versionnumber}"></script>
+<script src="{$public}js/sparkline/sparkline-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--Morris Chart-->
+<script src="{$public}js/morris-chart/morris.js{$versionnumber}"></script>
+<script src="{$public}js/morris-chart/raphael-min.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+
+<script>
+    /*=====STEPY WIZARD====*/
+    $(function() {
+        $('#default').stepy({
+            backLabel: 'Previous',
+            block: true,
+            nextLabel: 'Next',
+            titleClick: true,
+            titleTarget: '.stepy-tab'
+        });
+    });
+</script>
+
+</body>
+</html>

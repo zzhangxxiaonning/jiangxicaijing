@@ -1,0 +1,135 @@
+<include file="Common/title" />
+<link href="{$public}css/jquery.stepy.css{$versionnumber}" rel="stylesheet">
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <include file="Common/left" />
+    
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <!-- header section start-->
+        <include file="Common/header" />
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                {$cat_name}
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+					<a href="{:U('Index/index')}">控制面板</a>
+				</li>
+				<li>
+					<a href="{:U('Cirattr/attr_index')}">属性管理</a>
+				</li>
+				<li class="active">编辑栏目</li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+<div class="row">
+<div class="col-md-12">
+	<section class="panel">
+		<div class="panel-body">
+			<form action="" id="data_form_id" onsubmit="submit_form();return false;" class="form-horizontal ">
+				<div class="form-group">
+					<label class="control-label col-md-3">名称</label>
+					<div class="col-md-4 col-xs-11">
+						<input class="form-control form-control-inline input-medium"  size="16" type="text" name="catname" value="{$data.catname}"  />
+						<span class="help-block">请输入属性名称</span>
+					</div>
+				</div>
+
+	<div class="form-group">
+		<label class="control-label col-md-3">所属属性</label>
+		<div class="col-md-7 col-xs-11">
+				<select name="up_id" class="form-control form-control-inline input-medium">
+					<option value="0">顶级属性</option>
+					<!--<volist name="up_lists" id="vo">-->
+					<!--<option value="{$vo.id}" <if condition="$info['up_id'] eq $vo['id']"> selected</if>> {$vo.catname} </option>-->
+					<!--</volist>-->
+					<volist name="cat_list" id="vo">
+						<if condition="($vo['id'] neq $data['id']) and (strpos($vo['path'], $data['path'].'-'.$data['id'].'-') === false) and ($vo['path'] neq $data['path'].'-'.$data['id'])">
+							<option value="{$vo.id}" <if condition="$vo.id eq $data['up_id']">selected</if> >
+							{$vo.tname}
+							</option>
+						</if>
+					</volist>
+				</select>
+			<span class="help-block"></span>
+		</div>
+	</div>
+
+				
+		<div class="form-group">
+			<div class="col-lg-offset-2 col-lg-10" style="text-align:center; padding-right: 20%;">
+				<input name="id" type="hidden" value="{$data.id}">
+				<button class="btn btn-primary" type="submit">保存并关闭</button>
+				<button class="btn btn-default" type="button" onclick="location.href='{:U('attr_index')}'">取消</button>
+			</div>
+		</div>
+	</form>
+		</div>
+	</section>
+</div>
+</div>
+        </div>
+        <!--body wrapper end-->
+        <include file="Common/footer" />
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.validate.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.stepy.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script>
+function submit_form(){
+	layer.load(0, {shade: [0.2,'#616161']});
+	$("#data_form_id").ajaxSubmit({
+		type: "post",
+		beforeSubmit:function(data){
+			//console.log(data);
+			$.each(data,function(i){
+				if(data[i]['name'] == 'name' && data[i]['value'] == '' ){
+					layer.closeAll('loading');
+					$("input[name='"+data[i]['name']+"']").focus();
+					return false;
+				}
+			});
+			
+		},
+		success:function(data){
+			layer.closeAll('loading');
+//			console.log(data);
+			if(data.status == 1){
+				layer.msg(data.info,{shift:1,time:1500},function(){
+					window.location.href = data.url;
+				});
+			}else{
+				layer.msg(data.info,{shift:6,time:3000});
+			}
+		},
+		dataType:	"json"
+	});
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!-- left side start-->
+<div class="left-side sticky-left-side">
+
+	<!--logo and iconic logo start-->
+	<div class="logo" >
+		<a href="{:U('Index/index')}" style="margin: 5px 0 0 40px;"><img src="{$public}images/logo.png" alt=""></a>
+	</div>
+	    
+	<div class="logo-icon text-center">
+		<a href="{:U('Index/index')}"><img src="{$public}images/logo_icon.png" alt=""></a>
+	</div>
+	<!--logo and iconic logo end-->
+
+	<div class="left-side-inner">
+		<!--sidebar nav start-->
+		<ul class="nav nav-pills nav-stacked custom-nav">
+<volist name="menu_lists" id="vo">
+
+
+	<volist name="vo.id" id="void">
+		<if condition="$arr neq null">
+			<if condition="in_array($void,$arr)">
+				<notempty name="vo.son">
+
+					<li class="menu-list <if condition="in_array($menu_show['0'],$vo['id'])"> nav-active</if>">
+			<a href="{$vo.url}"><i class="fa {$vo.icon}"></i> <span>{$vo.title}</span></a>
+			<ul class="sub-menu-list">
+				<volist name="vo.son" id="vd">
+					<if condition="$arr_ neq null">
+						<if condition="in_array($vd['url'],$arr_)">
+							<li class=" <if condition="in_array($menu_show['0'],$vo['id']) and in_array($menu_show['1'],$vd['id'])"> active</if>"><a href="{$vd.url}">{$vd.title}</a></li>
+					</if>
+					<else/>
+					<li class=" <if condition="in_array($menu_show['0'],$vo['id']) and in_array($menu_show['1'],$vd['id'])"> active</if>"><a href="{$vd.url}">{$vd.title}</a></li>
+		</if>
+	</volist>
+		</ul>
+		</li>
+
+		<else/>
+		<li class=" <if condition="in_array($menu_show[0],$vo['id'])"> active</if>">
+		<a href="{$vo.url}"><i class="fa {$vo.icon}"></i> <span>{$vo.title}</span></a>
+		</li>
+
+		</notempty>
+		</if>
+		<else/>
+		<notempty name="vo.son">
+
+			<li class="menu-list <if condition="in_array($menu_show['0'],$vo['id'])"> nav-active</if>">
+			<a href="{$vo.url}"><i class="fa {$vo.icon}"></i> <span>{$vo.title}</span></a>
+			<ul class="sub-menu-list">
+				<volist name="vo.son" id="vd">
+					<if condition="$arr_ neq null">
+						<if condition="in_array($vd['url'],$arr_)">
+							<li class=" <if condition="in_array($menu_show['0'],$vo['id']) and in_array($menu_show['1'],$vd['id'])"> active</if>"><a href="{$vd.url}">{$vd.title}</a></li>
+					</if>
+					<else/>
+					<li class=" <if condition="in_array($menu_show['0'],$vo['id']) and in_array($menu_show['1'],$vd['id'])"> active</if>"><a href="{$vd.url}">{$vd.title}</a></li>
+					</if>
+				</volist>
+			</ul>
+			</li>
+
+			<else/>
+			<li class=" <if condition="in_array($menu_show[0],$vo['id'])"> active</if>">
+			<a href="{$vo.url}"><i class="fa {$vo.icon}"></i> <span>{$vo.title}</span></a>
+			</li>
+
+		</notempty>
+
+		</if>
+		</volist>
+</volist>
+
+		</ul>
+		<!--sidebar nav end-->
+
+	</div>
+</div>
+<!-- left side end-->

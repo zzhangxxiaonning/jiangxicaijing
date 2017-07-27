@@ -1,0 +1,42 @@
+<script src="{$source}js/jquery.form.js{$versionnumber}"></script>
+<script src="{$source}layer/layer.js{$versionnumber}" type="text/javascript"></script>
+<script>
+	var myDate = new Date();
+	//获取当前年
+	var year=myDate.getFullYear();
+
+	$(".years").text(year);
+</script>
+<div class="side-bar" id="info"></div>
+<!--<div class="side-bar" id="info_mem"></div>-->
+<style>
+    .side-bar {width: 210px;height:70px;position: fixed;bottom: 20px;right: 0;z-index: 100;}
+    .chat-tips{border:1px solid #d5d5d5;text-align:center;}
+    #info{bottom:10px;}
+    #info_mem{bottom:30px;}
+</style>
+<script>
+    $(function(){
+        setInterval(aa,10000);
+        function aa(){
+            var info_html = '';
+            $.ajax({
+                type: 'post',
+                url: "{:U('Ajaxjson/report')}",
+                data: {},
+                dataType:'json',
+                success:function(data){
+//                    console.log(data);
+                    if(data.status){
+                        //alert(data.info);
+                        info_html += "<div class='chat-tips'><a href='"+data.url+"' style='line-height:80px;'>"+data.info+"</a><br/></div>";
+
+                    }
+                    $("#info").html(info_html);
+                }
+            });
+
+        }
+    })
+
+</script>
