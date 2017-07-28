@@ -41,41 +41,46 @@
 			<button class="btn btn-default" type="button" onclick="location.reload()"><i class="fa fa-refresh"></i> 刷新</button>
 			<button class="btn btn-info" type="button" onclick="location.href='{:U('stu_add')}'"><i class="fa fa-plus"></i> 添加</button>
 		</span>
+
 	</header>
 	<div class="panel-body" style=" <eq name="is_service" value="0">display: none;<else/>display: block;</eq>">
-<form action="{:U('stu_index')}" method="get">
-<div class="col-md-2" >
-	<div class="input-group panel">
-		<span class="input-group-addon">名称</span>
-		<input type="text" name="name" value="{:I('get.name')}" class="form-control" placeholder="姓名/学号">
-	</div>
-</div>
-	<div class="col-md-2">
-		<div class="input-group panel">
-			<span class="input-group-addon">会员类型</span>
-			<select class="form-control" name="status">
-				<option value="-1">全部</option>
-				<option value="1" <if condition="I('get.status','-1') eq 1"> selected</if> >已启用</option>
-				<option value="0" <if condition="I('get.status','-1') eq 0"> selected</if> >已禁用</option>
-			</select>
+		<form action="{:U('stu_index')}" method="get">
+		<div class="col-md-2" >
+			<div class="input-group panel">
+				<span class="input-group-addon">名称</span>
+				<input type="text" name="name" value="{:I('get.name')}" class="form-control" placeholder="姓名/学号">
+			</div>
 		</div>
-	</div>
-<div class="col-md-4">
-	<div class="input-group panel">
-		<span class="input-group-addon">发布</span>
-		<div class="input-group input-large custom-date-range" data-date="2013-07-13" data-date-format="yyyy-mm-dd">
-	        <input type="text" class="form-control dpd1" name="start_time" value="<notempty name="info.start_time">{$info.start_time|date='Y-m-d H:i:s',###}</notempty>">
-	        <span class="input-group-addon">To</span>
-	        <input type="text" class="form-control dpd2" name="end_time" value="<notempty name="info.end_time">{$info.end_time|date='Y-m-d H:i:s',###}</notempty>">
-	    </div>
-	</div>
-</div>
-<div class="col-md-1">	
-	<button class="btn btn-default" type="submit"><i class="fa fa-search"></i> 查找</button>
-</div>
+			<div class="col-md-2">
+				<div class="input-group panel">
+					<span class="input-group-addon">会员类型</span>
+					<select class="form-control" name="status">
+						<option value="-1">全部</option>
+						<option value="1" <if condition="I('get.status','-1') eq 1"> selected</if> >已启用</option>
+						<option value="0" <if condition="I('get.status','-1') eq 0"> selected</if> >已禁用</option>
+					</select>
+				</div>
+			</div>
+		<div class="col-md-4">
+			<div class="input-group panel">
+				<span class="input-group-addon">发布</span>
+				<div class="input-group input-large custom-date-range" data-date="2013-07-13" data-date-format="yyyy-mm-dd">
+					<input type="text" class="form-control dpd1" name="start_time" value="<notempty name="info.start_time">{$info.start_time|date='Y-m-d H:i:s',###}</notempty>">
+					<span class="input-group-addon">To</span>
+					<input type="text" class="form-control dpd2" name="end_time" value="<notempty name="info.end_time">{$info.end_time|date='Y-m-d H:i:s',###}</notempty>">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1">
+			<button class="btn btn-default" type="submit"><i class="fa fa-search"></i> 查找</button>
+		</div>
 
-</form>
+
+		</form>
 </section>
+
+
+
 		<section class="panel">
 			<div class="panel-body">
 
@@ -116,7 +121,28 @@
 	</tbody>
 </table>
 			</div>
-			
+
+			<div class="panel-body" style="padding:0px 15px;">
+				<div class="">
+					<form action="{:U('impUser')}" method="post" enctype="multipart/form-data">
+						<span style="float:left;">
+							<button class="btn btn-info-back" type="button" onclick="location.href='{:U('expUser',array('name'=>I('name'),'status'=>I('status'),'start_time'=>I('start_time'),'end_time'=>I('end_time')))}'">导出</button>
+							<button class="btn btn-info-back" style="padding: 5px;" ><input type="submit" value="导入" style="border:none;background: none;color:black;"/></button>
+						</span>
+						<span>
+							<input type="file" name="import" class="expinput" style="padding: 5px;" value=""/>
+							<input type="hidden" name="table" value="tablename" class="expinput"/>
+						</span>
+					</form>
+				</div>
+				<style>
+					.btn-info-back{
+						background: none;
+						color:#000000;
+						border:1px solid #999;
+					}
+				</style>
+			</div>
 			<div class="panel-body">
 				<div class="">
 					<ul class="pagination">{$page}</ul>

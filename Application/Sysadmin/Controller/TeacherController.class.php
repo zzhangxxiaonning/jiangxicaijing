@@ -189,5 +189,132 @@ class TeacherController extends CommonController {
 			
 		}
 	}
+
+    /**
+     *
+     * 导出Excel
+     */
+    public function expUser(){//导出Excel
+
+        $xlsName  = "Teacher";
+        $xlsCell  = array(
+            array('id','账号序列'),
+            array('username','姓名'),
+            array('worker_id','职工号'),
+            array('technical','职称'),
+            array('create_time','添加时间'),
+        );
+        $xlsModel = M('Teacher');
+        $map = array();
+        $is_service = 0;
+        $name = I('get.name','');
+        if($name){
+            $map['username|worker_id'] = array('like','%'.$name.'%');
+            $is_service++;
+        }
+
+        $technical = I('get.technical','');
+        if($technical){
+            $map['technical'] = array('like','%'.$technical.'%');
+            $is_service++;
+        }
+
+        $status = I('get.status','-1');
+        if($status > '-1'){
+            $map['status'] = array('eq',$status);
+            $is_service++;
+        }
+
+        $start_time = I('get.start_time','');
+        $end_time = I('get.end_time','');
+        if($start_time && $end_time){
+            $start = strtotime($start_time);
+            $end = strtotime($end_time);
+            $map['create_time'] = array('BETWEEN',array($start,$end));
+            $is_service++;
+        }elseif(!$start_time && $end_time){
+            $end = strtotime($end_time);
+            $map['create_time'] = array('ELT',$end);
+            $is_service++;
+        }elseif($start_time && !$end_time){
+            $start = strtotime($start_time);
+            $map['create_time'] = array('EGT',$start);
+            $is_service++;
+        }
+
+        $sort = 'id desc';
+        $this->assign('is_service',$is_service);
+        $xlsData  = $xlsModel->Field('id,username,worker_id,technical,create_time') -> where($map)->select();
+        foreach($xlsData as $a=>$v){
+            $xlsData[$a]['create_time'] = date("Y-m-d H:i:s", $v['create_time']) ;
+        }
+        $this->exportExcel($xlsName,$xlsCell,$xlsData);
+
+    }
+
+    /**
+     *
+     * 显示导入页面 ...
+     */
+
+    /**实现导入excel
+     **/
+    public function impUser(){
+        if (!empty($_FILES)) {
+            $upload = new \Think\Upload();// 实例化上传类
+            $filepath='./Uploads/Excel/';
+            $upload->exts = array('xlsx','xls');// 设置附件上传类型
+            $upload->rootPath  =  $filepath; // 设置附件上传根目录
+            $upload->saveName  =     'time';
+            $upload->autoSub   =     false;
+            if (!$info=$upload->upload()) {
+                $this->error($upload->getError());
+            }
+            foreach ($info as $key => $value) {
+                unset($info);
+                $info[0]=$value;
+                $info[0]['savepath']=$filepath;
+            }
+            vendor("PHPExcel.PHPExcel");
+            $file_name=$info[0]['savepath'].$info[0]['savename'];
+            $objReader = \PHPExcel_IOFactory::createReader('Excel5');
+            $objPHPExcel = $objReader->load($file_name,$encode='utf-8');
+            $sheet = $objPHPExcel->getSheet(0);
+            $highestRow = $sheet->getHighestRow(); // 取得总行数
+            $highestColumn = $sheet->getHighestColumn(); // 取得总列数
+            $j=0;
+            for($i=3;$i<=$highestRow;$i++)
+            {
+                $data['username']= $objPHPExcel->getActiveSheet()->getCell("B".$i)->getValue();
+                $data['worker_id']=$objPHPExcel->getActiveSheet()->getCell("C".$i)->getValue();
+                $data['technical']=$objPHPExcel->getActiveSheet()->getCell("D".$i)->getValue();
+                $time = $objPHPExcel->getActiveSheet()->getCell("E".$i)->getValue();
+                if($time){
+                    $data['create_time']=strtotime($time);
+                }else{
+                    $data['create_time'] = time();
+                }
+
+                if($data['username']){
+                    if(M('Teacher')->where("worker_id='".$data['worker_id']."'")->find()){
+                        //如果存在相同联系人。判断条件：电话 两项一致，上面注释的代码是用姓名/电话判断
+                        $this->error('您导入的数据中有职工号和现有数据重复！');
+                    }else{
+                        $data['create_time']=time();
+                        M('Teacher')->add($data);
+                        $j++;
+                    }
+                }
+
+            }
+            unlink($file_name);
+            $this->inserlog('批量导入教师，数量：'.$j,'Circle');
+            $this->success('导入成功！本次导入联系人数量：'.$j);
+        }else
+        {
+            $this->error("请选择上传的文件");
+        }
+    }
+
 	
 }

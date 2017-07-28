@@ -122,7 +122,27 @@
 	</tbody>
 </table>
 			</div>
-			
+			<div class="panel-body" style="padding:0px 15px;">
+				<div class="">
+					<form action="{:U('impUser')}" method="post" enctype="multipart/form-data">
+						<span style="float:left;">
+							<button class="btn btn-info-back" type="button" onclick="location.href='{:U('expUser',array('name'=>I('name'),'technical'=>I('technical'),'status'=>I('status'),'start_time'=>I('start_time'),'end_time'=>I('end_time')))}'">导出</button>
+							<button class="btn btn-info-back" type="button" style="padding: 5px;"><input type="submit" value="导入" style="border:none;background: none;color:black;"/></button>
+						</span>
+						<span>
+							<input type="file" name="import" class="expinput" style="padding: 5px;" value=""/>
+							<input type="hidden" name="table" value="tablename" class="expinput"/>
+						</span>
+					</form>
+				</div>
+				<style>
+					.btn-info-back{
+						background: none;
+						color:#000000;
+						border:1px solid #999;
+					}
+				</style>
+			</div>
 			<div class="panel-body">
 				<div class="">
 					<ul class="pagination">{$page}</ul>
