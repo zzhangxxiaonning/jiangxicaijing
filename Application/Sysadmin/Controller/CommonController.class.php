@@ -278,6 +278,10 @@ class CommonController extends Controller{
         $menu[$i]['son'][$j]['url']	= U('Mail/index_mail');
         $menu[$i]['son'][$j]['id']	= array('index_mail','add','adds','edit_mail','del_index');
         $j++;
+        $menu[$i]['son'][$j]['title']	= '数据备份';
+        $menu[$i]['son'][$j]['url']	= U('Database/data_index');
+        $menu[$i]['son'][$j]['id']	= array('data_index');
+        $j++;
         $menu[$i]['son'][$j]['title']	= '日志记录';
         $menu[$i]['son'][$j]['url']	= U('Record/index_record');
         $menu[$i]['son'][$j]['id']	= array('index_record');

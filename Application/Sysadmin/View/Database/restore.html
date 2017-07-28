@@ -1,0 +1,219 @@
+<include file="Common/title" />
+</head>
+<style>
+	.sort{
+		
+		width:30px;
+	}
+</style>
+<body class="sticky-header">
+
+<section>
+<!-- left side start-->
+<include file="Common/left" />
+
+<!-- main content start-->
+<div class="main-content" >
+
+<!-- header section start-->
+<include file="Common/header" />
+
+<!-- page heading start-->
+<div class="page-heading">
+	<h3>
+		{$cat_name}
+	</h3>
+	<ul class="breadcrumb">
+		<li>
+			<a href="{:U('Index/index')}">控制面板</a>
+		</li>
+		<li class="active">{$cat_name}</li>
+	</ul>
+
+</div>
+<!-- page heading end-->
+
+<!--body wrapper start-->
+<div class="wrapper">
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- 返回信息 -->
+			<div class="error-message" style="display:none;"></div>
+			<form action="{:U('Database/import')}" method="post">
+				<div>
+					<a href="{:U('Database/data_index')}" class="btn btn-info">去备份数据</a>
+				</div>
+				<div class="widget-box">
+					<div class="widget-header widget-header-flat">
+						<h4 class="smaller">
+							<i class="ace-icon glyphicon glyphicon-list"></i>
+							{$meta_title}
+						</h4>
+					</div>
+					<div class="widget-body">
+						<div class="widget-main">
+							<!-- 自定内容 -->
+							<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+								<thead>
+								<tr>
+									<th class="col-xs-4">备份名称</th>
+									<th>文件总大小</th>
+									<th>备份时间</th>
+									<th>操作</th>
+								</tr>
+								</thead>
+								<tbody>
+								<volist name="backups" id="val">
+									<tr class="collapsed">
+										<td data="{$val.name}" class="flip">
+											<a href="javascript:void(0);" style="text-decoration:none;">
+												&nbsp;
+												<i class="ace-icon glyphicon glyphicon-plus"></i>
+											</a>&nbsp;{$val.name}
+										</td>
+										<td>{$val.total_size}kb</td>
+										<td>{$val.date_str}</td>
+										<td>
+											<!-- <a href="{:U('Admin/DataBase/del_backup', array('backup'=>$val['name']))}" value="{$val['name']}" class="js-ajax-delete dleLink">删除备份</a> |  -->
+											<a href="javascript:void(0);" value="{$val['name']}" class="js-ajax-delete dleLink">删除备份</a> |
+											<a href="{:U('Database/import', array('backup'=>$val['name']))}" class="js-ajax-dialog-btn" onclick="return confirm('确认要恢复吗？');">恢复</a>
+										</td>
+									</tr>
+									<volist name="val['vols']" id="vol">
+										<tr parent="{$val.name}" class="panel {$val.name}">
+											<td>├─ {$vol.file}</td>
+											<td>{$vol.size}kb</td>
+											<td>{$val.date_str}</td>
+											<td>
+												<!-- <a href="{:U('Admin/DataBase/download', array('backup'=>$val['name'], 'file'=>$vol['file']))}">下载</a> -->
+											</td>
+										</tr>
+									</volist>
+								</volist>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- end -->
+		</div>
+		<style type="text/css">
+			.panel
+			{
+				display:none;
+			}
+		</style>
+	</div>
+	
+
+	
+</div>
+<!--body wrapper end-->
+
+<!--footer section start-->
+<include file="Common/footer" />
+
+
+</div>
+<!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="{$public}js/jquery-1.10.2.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-ui-1.9.2.custom.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery-migrate-1.2.1.min.js{$versionnumber}"></script>
+<script src="{$public}js/bootstrap.min.js{$versionnumber}"></script>
+<script src="{$public}js/modernizr.min.js{$versionnumber}"></script>
+<script src="{$public}js/jquery.nicescroll.js{$versionnumber}"></script>
+
+<!--easy pie chart-->
+<script src="{$public}js/easypiechart/jquery.easypiechart.js{$versionnumber}"></script>
+<script src="{$public}js/easypiechart/easypiechart-init.js{$versionnumber}"></script>
+
+<!--icheck -->
+<script src="{$public}js/iCheck/jquery.icheck.js{$versionnumber}"></script>
+<script src="{$public}js/icheck-init.js{$versionnumber}"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="{$public}js/flot-chart/jquery.flot.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.tooltip.js{$versionnumber}"></script>
+<script src="{$public}js/flot-chart/jquery.flot.resize.js{$versionnumber}"></script>
+
+
+<!--pickers css-->
+<link rel="stylesheet" type="text/css" href="{$public}js/bootstrap-datetimepicker/css/datetimepicker-custom.css{$versionnumber}" />
+<!--pickers plugins-->
+<script type="text/javascript" src="{$public}js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js{$versionnumber}"></script>
+<!--pickers initialization-->
+<script src="{$public}js/pickers-init.js{$versionnumber}"></script>
+
+<!--common scripts for all pages-->
+<script src="{$public}js/scripts.js{$versionnumber}"></script>
+<include file="Common/footer_bottom" />
+<script src="{$public}js/common.js{$versionnumber}"></script>
+<script type="text/javascript" src="{$public}js/jquery_asyncoper.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		// 隐藏、显示
+		$(".flip").click(function(){
+			var precent = $(this).attr('data');
+			$("tr[parent='"+precent+"']").slideToggle("slow");
+		});
+	});
+	//绑定删除的点击事件
+	$(".dleLink").click(function () {
+		var url="{:U('Database/del_backup')}";
+		del(url,$(this));
+	});
+
+	//删除单行
+	/**
+	 * url:"{:U('Slide/delete_slide_category', array('id'=>$vo['id']))}"
+	 * os:$(this)
+	 */
+	function del(url,os){
+		var tr =os.parent().parent();
+		if (confirm("确定删除？")) {
+			var id = os.attr("value");
+			alert(id);
+			$.ajax({
+				url: url,
+				data: "id=" + id,
+				type: "POST",
+				success: function (data) {
+					console.log(data);
+					if (data.status=='1') {
+						data=data.info;
+						showTis(data,1,'success');
+						tr.fadeOut("slow");
+					}else{
+						data=data.info;
+						showTis(data,1,'error');
+					}
+
+				}
+			});
+		}
+		return false;
+	}
+	function showTis(data,time,stut){
+
+		$('.error-message').css('display','block');
+		if(stut=='error'){
+			$(".error-message").html('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><i class="ace-icon fa fa-times"></i>提示！'+data+'<br></div>');
+		}else{
+			$(".error-message").html('<div class="alert alert-block alert-success"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button><p><i class="ace-icon fa fa-check"></i>提示！'+data+'</p></div>');
+		}
+		$('.error-message').click(function(){
+			$('.error-message').css('display','none');
+		});
+		setTimeout(function(){
+			$('.error-message').css('display','none');
+			//window.location.reload();
+		},(1000*time));
+	}
+
+</script>
+</body>
+</html>
