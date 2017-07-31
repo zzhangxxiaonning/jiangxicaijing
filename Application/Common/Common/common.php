@@ -141,6 +141,8 @@ function array_remove($arr, $offset){
     return $arr;
 }
 
+
+
 function base2img($base,$path='image',$name){
     $name = $name?$name:time().rand(1000,9999);
     $array = explode(';',$base);

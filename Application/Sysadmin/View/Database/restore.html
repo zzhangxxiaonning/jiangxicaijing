@@ -45,10 +45,7 @@
 				</div>
 				<div class="widget-box">
 					<div class="widget-header widget-header-flat">
-						<h4 class="smaller">
-							<i class="ace-icon glyphicon glyphicon-list"></i>
-							{$meta_title}
-						</h4>
+						<h4 class="smaller"></h4>
 					</div>
 					<div class="widget-body">
 						<div class="widget-main">
@@ -65,11 +62,8 @@
 								<tbody>
 								<volist name="backups" id="val">
 									<tr class="collapsed">
-										<td data="{$val.name}" class="flip">
-											<a href="javascript:void(0);" style="text-decoration:none;">
-												&nbsp;
-												<i class="ace-icon glyphicon glyphicon-plus"></i>
-											</a>&nbsp;{$val.name}
+										<td data="{$val.name}">
+											&nbsp;{$val.name}
 										</td>
 										<td>{$val.total_size}kb</td>
 										<td>{$val.date_str}</td>
@@ -154,13 +148,7 @@
 <script src="{$public}js/common.js{$versionnumber}"></script>
 <script type="text/javascript" src="{$public}js/jquery_asyncoper.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		// 隐藏、显示
-		$(".flip").click(function(){
-			var precent = $(this).attr('data');
-			$("tr[parent='"+precent+"']").slideToggle("slow");
-		});
-	});
+
 	//绑定删除的点击事件
 	$(".dleLink").click(function () {
 		var url="{:U('Database/del_backup')}";
@@ -176,7 +164,7 @@
 		var tr =os.parent().parent();
 		if (confirm("确定删除？")) {
 			var id = os.attr("value");
-			alert(id);
+
 			$.ajax({
 				url: url,
 				data: "id=" + id,

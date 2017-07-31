@@ -279,8 +279,8 @@ class CommonController extends Controller{
         $menu[$i]['son'][$j]['id']	= array('index_mail','add','adds','edit_mail','del_index');
         $j++;
         $menu[$i]['son'][$j]['title']	= '数据备份';
-        $menu[$i]['son'][$j]['url']	= U('Database/data_index');
-        $menu[$i]['son'][$j]['id']	= array('data_index');
+        $menu[$i]['son'][$j]['url']	= U('Database/restore');
+        $menu[$i]['son'][$j]['id']	= array('data_index','restore');
         $j++;
         $menu[$i]['son'][$j]['title']	= '日志记录';
         $menu[$i]['son'][$j]['url']	= U('Record/index_record');
@@ -420,6 +420,30 @@ class CommonController extends Controller{
         $map['id']		=	array('eq',$id);
         $name = $sql -> where($map) -> find();
         return $name['title'];
+    }
+
+    /**
+     * 循环删除缓存文件
+     **/
+    protected function rmdirr($dirname){
+        if(!file_exists($dirname)){
+            return false;
+        }
+        if(is_file($dirname) || is_link($dirname)){
+            return unlink($dirname);
+        }
+        $dir = dir($dirname);
+        if($dir){
+            while(false !== $entry = $dir->read()){
+                if($entry == '.' || $entry == '..') {
+                    continue;
+                }
+                //递归
+                $this->rmdirr($dirname . DIRECTORY_SEPARATOR . $entry);
+            }
+        }
+        $dir->close();
+        return rmdir($dirname);
     }
 
     protected function exportExcel($expTitle,$expCellName,$expTableData){

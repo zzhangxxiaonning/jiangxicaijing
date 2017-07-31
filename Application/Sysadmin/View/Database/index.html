@@ -47,10 +47,7 @@
 				</div>
 				<div class="widget-box">
 					<div class="widget-header widget-header-flat">
-						<h4 class="smaller">
-							<i class="ace-icon glyphicon glyphicon-list"></i>
-							{$meta_title}
-						</h4>
+						<h4 class="smaller"></h4>
 					</div>
 					<div class="widget-body">
 						<div class="widget-main">
@@ -68,19 +65,19 @@
 										<td>备份名称</td>
 										<td><input type="text" name="backup_name" value="{$backup_name}"></td>
 									</tr>
-									<tr>
-										<td>备份类型</td>
-										<td>
-											<label>
-												<input type="radio" checked="checked" value="full" name="backup_type" onclick="javascript:$('#js-showtables').hide();" class="ace">
-												<span class="lbl"> 备份所有&nbsp;&nbsp;</span>
-											</label>
-											<label>
-												<input type="radio" value="custom" name="backup_type" onclick="javascript:$('#js-showtables').show();" class="ace" />
-												<span class="lbl">自定义备份</span>
-											</label>
-										</td>
-									</tr>
+									<!--<tr>-->
+										<!--<td>备份类型</td>-->
+										<!--<td>-->
+											<!--<label>-->
+												<!--<input type="radio" checked="checked" value="full" name="backup_type" onclick="javascript:$('#js-showtables').hide();" class="ace">-->
+												<!--<span class="lbl"> 备份所有&nbsp;&nbsp;</span>-->
+											<!--</label>-->
+											<!--<label>-->
+												<!--<input type="radio" value="custom" name="backup_type" onclick="javascript:$('#js-showtables').show();" class="ace" />-->
+												<!--<span class="lbl">自定义备份</span>-->
+											<!--</label>-->
+										<!--</td>-->
+									<!--</tr>-->
 									<tr id="js-showtables">
 										<td align="right">
 											<label class="position-relative">

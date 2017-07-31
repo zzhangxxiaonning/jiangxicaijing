@@ -34,8 +34,9 @@ class DatabaseController extends CommonController {
     /**
      * 数据库备份
      */
-    public function data_index()
-    {
+    public function data_index(){
+        $cat_name = '数据备份';
+        $this->assign('cat_name',$cat_name);
         //获得当前服务器上传最大限制作为分卷大小
         $allow_max_size = $this->_return_bytes(@ini_get('upload_max_filesize'));
 
@@ -47,13 +48,20 @@ class DatabaseController extends CommonController {
         $this->assign('bname', I('get.backup_name'));
         $this->assign('bsizelimit', I('get.sizelimit'));
         $this->assign('bdosubmit', I('get.dosubmit'));
+
+        $menu_show[0] = 'config';
+        $menu_show[1] = 'data_index';
+        $this->assign('menu_show',$menu_show);
+
+
         $this->display('index');
     }
 
     public function index_post(){
+
         if (IS_POST || isset($_GET['dosubmit']))
         {
-            // print_r($_POST);exit();
+//             print_r($_POST);exit();
             if (isset($_GET['type']) && $_GET['type'] == 'url')
             {
                 $sizelimit = isset($_GET['sizelimit']) && abs(intval($_GET['sizelimit'])) ? abs(intval($_GET['sizelimit'])) : $this->error('请输入每个分卷文件大小');
@@ -98,8 +106,15 @@ class DatabaseController extends CommonController {
      */
     public function restore()
     {
+        $cat_name = '数据备份';
+        $this->assign('cat_name',$cat_name);
+
         $this->assign('backups', $this->_get_backups());
         $this->assign('table_list', true);
+
+        $menu_show[0] = 'config';
+        $menu_show[1] = 'restore';
+        $this->assign('menu_show',$menu_show);
         $this->display();
     }
 
@@ -127,7 +142,7 @@ class DatabaseController extends CommonController {
                 $this->success('导入成功！', U("Database/restore"));
             }
         }
-        $this->display();
+//        $this->display();
     }
 
     private function _import_vol($sql_file_name)
@@ -161,16 +176,19 @@ class DatabaseController extends CommonController {
         {
             $this->error('非法参数');
         }
-//        import("Org.Util.Dir");
-//        $dir = new \Dir();
-//        $dir->delDir(SITE_PATH . $this->backup_path . $_GET['backup'].'/');
-
-
         $dir=SITE_PATH . $this->backup_path . $_GET['backup'];
-//        print_r($dir);exit;
-        dir($dir);
+
+        if(file_exists($dir)){
+            @mkdir($dir,0777,true);
+            //清理缓存
+            $this->rmdirr($dir);
+        }else{
+            $this->error('删除失败');
+        }
         $this->ajaxReturn(array('status'=>1,'info'=>'删除成功！'));
     }
+
+
 
     /**
      * 下载备份文件
