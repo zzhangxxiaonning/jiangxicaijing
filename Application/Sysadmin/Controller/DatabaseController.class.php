@@ -116,6 +116,7 @@ class DatabaseController extends CommonController {
         $menu_show[1] = 'restore';
         $this->assign('menu_show',$menu_show);
         $this->display();
+        dump($this->_get_backups());
     }
 
     /**
@@ -156,6 +157,7 @@ class DatabaseController extends CommonController {
         for ($i = 0; $i < $ret_count; $i++)
         {
             $ret[$i] = trim($ret[$i], " \r\n;"); //剔除多余信息
+
             if (!empty($ret[$i]))
             {
                 // 数据库信息必须为进行了严格的转义数据，不能存在引起sql歧义符号！否则备份不能按每一行保存，导致数据错误
@@ -253,6 +255,7 @@ class DatabaseController extends CommonController {
      */
     private function _get_backups()
     {
+
         $backups = array(); //所有的备份
         if (is_dir(SITE_PATH . $this->backup_path))
         {
@@ -263,7 +266,8 @@ class DatabaseController extends CommonController {
                     if ($file{0} != '.' && filetype(SITE_PATH . $this->backup_path . $file) == 'dir')
                     {
                         $backup['name'] = $file;
-                        $backup['date'] = filemtime(SITE_PATH . $this->backup_path . $file) - date('Z');
+//                        $backup['date'] = filemtime(SITE_PATH . $this->backup_path . $file) + date('Z');
+                        $backup['date'] = filemtime(SITE_PATH . $this->backup_path . $file);
                         $backup['date_str'] = date('Y-m-d H:i:s', $backup['date']);
                         $backup['vols'] = $this->_get_vols($file);
                         $end_vol = end($backup['vols']);

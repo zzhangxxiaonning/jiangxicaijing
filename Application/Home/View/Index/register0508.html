@@ -1,0 +1,24 @@
+<!--<img src="http://paysdk.weixin.qq.com/example/qrcode.php?data=weixin%3A%2F%2Fwxpay%2Fbizpayurl%3Fpr%3DB6ETjvo">-->
+<include file="Common:header"/>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+
+    <div id="login_container"></div>
+
+<script>
+    var x = 12;
+    var y = 0;
+    var rand = parseInt(Math.random() * (x - y + 1) + y);
+    var obj = new WxLogin({
+        id:"login_container",
+        appid: "wx86ca1b8c72e0b055",
+        scope: "snsapi_login",
+        redirect_uri: "http://putao.ibangoo.com/Index/register",
+        state: rand,
+        style: "",
+        href: ""
+    });
+
+
+</script>
+
+

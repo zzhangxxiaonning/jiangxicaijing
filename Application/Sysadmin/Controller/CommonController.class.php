@@ -285,6 +285,10 @@ class CommonController extends Controller{
         $menu[$i]['son'][$j]['title']	= '日志记录';
         $menu[$i]['son'][$j]['url']	= U('Record/index_record');
         $menu[$i]['son'][$j]['id']	= array('index_record');
+        $j++;
+        $menu[$i]['son'][$j]['title']	= '获奖资讯';
+        $menu[$i]['son'][$j]['url']	= U('Honor/his_index');
+        $menu[$i]['son'][$j]['id']	= array('his_index','his_add','his_edit','his_del');
 		
 		
 		// $i++;

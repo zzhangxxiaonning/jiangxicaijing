@@ -1,0 +1,675 @@
+<include file="Common:header"/>
+<body>
+<div class="index-page">
+    <div class="bg"><img src="{$public}images/bimbg.jpg"></div>
+    <img src="{$public}images/bimbg.png" class="earth">
+    <canvas id="canvas" class="star"></canvas>
+    <div class="index-nav">
+        <div class="nav clearfix">
+            <div class="logo"><img src="{$public}images/indexlogo.png"/></div>
+            <div class="right clearfix">
+                <div class="item clearfix">
+                    <a href="" class="link cur">首页</a>
+                    <a href="{:U('Member/message')}" class="link">消息</a>
+                    <a href="{:U('Member/activity')}" class="link">我的活动</a>
+                    <a href="{:U('Member/flash')}" class="link">我的课程</a>
+                    <a href="{:U('Member/collect')}" class="link">我的收藏</a>
+                </div>
+                <!--<div class="opt clearfix">-->
+                    <!--<a href="" class="reg">免费注册</a>-->
+                    <!--<a href="" class="lg">登录</a>-->
+                <!--</div>-->
+                <div class="user clearfix">
+                    <div class="avator"><img src="{$mem_my.thumb|Thumb}"></div>
+                    <span class="name"><a href="{:U('Member/index')}">{$mem_my.nickname}</a></span>
+                    <a href="javascript:out();" class="ot">退出登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="num-item clearfix">
+            <div class="num clearfix">
+                <span>文献资料</span>
+                <div class="num-box">
+                    <i><ul class="scroll-num" data-val="0"></ul></i>
+                    <i><ul class="scroll-num" data-val="2"></ul></i>
+                    <i><ul class="scroll-num" data-val="1"></ul></i>
+                </div>
+                <span>万</span>
+            </div>
+            <div class="num clearfix">
+                <span>在线视频</span>
+                <div class="num-box">
+                    <i><ul class="scroll-num" data-val="5"></ul></i>
+                    <i><ul class="scroll-num" data-val="2"></ul></i>
+                    <i><ul class="scroll-num" data-val="6"></ul></i>
+                    <i><ul class="scroll-num" data-val="0"></ul></i>
+                </div>
+                <span>万</span>
+            </div>
+            <div class="num clearfix">
+                <span>一线讲师</span>
+                <div class="num-box">
+                    <i><ul class="scroll-num" data-val="7"></ul></i>
+                    <i><ul class="scroll-num" data-val="6"></ul></i>
+                    <i><ul class="scroll-num" data-val="8"></ul></i>
+                </div>
+                <span>位</span>
+            </div>
+        </div>
+        <div class="search-content clearfix">
+            <form action="{:U('Search/index')}" method="get">
+            <div class="left">
+                <div class="select">
+                    <span class="show">全站</span>
+                    <input type="hidden" value="1" name="type" class="hidden">
+                    <div class="select-opt" data-status="close">
+                        <span data-val="1" class="active">全站</span>
+                        <!--<span data-val="1">云一体机</span>-->
+                        <span data-val="2">活动</span>
+                        <span data-val="3">云课堂</span>
+                        <span data-val="4">文库</span>
+                        <!--<span data-val="5">专家</span>-->
+                        <!--<span data-val="6">work</span>-->
+                        <!--<span data-val="7">作品集</span>-->
+                        <!--<span data-val="8">软件</span>-->
+                        <!--<span data-val="9">知道</span>-->
+                        <!--<span data-val="10">资讯</span>-->
+                    </div>
+                </div>
+                <input type="text" placeholder="输入您想要搜索的关键字" name="title" class="textfield" style="color:black;">
+            </div>
+            <button class="search-btn iconfont icon-sousuo_sousuo"></button>
+                </form>
+        </div>
+        <div class="comb-item">
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+	                    viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                    <style type="text/css">
+                        .st0{fill:url(#SVGID_1_);}
+                    </style>
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="32.9742" y1="98.4393" x2="171.7922" y2="98.4393">
+                        <stop  offset="0" style="stop-color:#36AFDD"/>
+                        <stop  offset="1" style="stop-color:#74BD99"/>
+                    </linearGradient>
+                    <path class="st0" d="M142.1,86.9c-1.1,0-2.2,0.1-3.3,0.2v-0.2c0-20-16.3-36.4-36.4-36.4S66,66.8,66,86.9v0.2
+                        c-1.1-0.1-2.2-0.2-3.3-0.2c-16.4,0-29.7,13.3-29.7,29.7s13.3,29.7,29.7,29.7H142c1.8,0,3.3-1.5,3.3-3.3c0-1.8-1.5-3.3-3.3-3.3H62.7
+                        c-12.8,0-23.1-10.4-23.1-23.1c0-14.7,14-26.4,29.2-22.3c1.1,0.3,2.2,0,3-0.7c0.8-0.7,1.2-1.8,1.1-2.9c-0.2-1.5-0.3-2.7-0.3-3.8
+                        c0-16.4,13.3-29.7,29.7-29.7s29.7,13.3,29.7,29.7c0,1.2-0.1,2.4-0.3,3.8c-0.1,1.1,0.3,2.2,1.1,2.9c0.8,0.7,2,1,3,0.7
+                        c15.2-4.1,29.2,7.6,29.2,22.3c0,3.9-1,7.8-2.9,11.2c-0.9,1.6-0.3,3.6,1.3,4.5c1.6,0.9,3.6,0.3,4.5-1.3c2.5-4.4,3.8-9.4,3.8-14.5
+                        C171.8,100.2,158.4,86.9,142.1,86.9L142.1,86.9z"/>
+                    </svg>
+                    </div>
+                    <span>云一体机</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('Imac/index')}" class="more">查看更多</a>
+                        <div class="t">BIM云一体机</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                        </style>
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="100.0996" y1="164.9221" x2="100.0996" y2="26.2411">
+                            <stop  offset="0" style="stop-color:#36AFDD"/>
+                            <stop  offset="1" style="stop-color:#74BD99"/>
+                        </linearGradient>
+                        <path class="st0" d="M156,60.5h-22.1c2.8-3.6,4.5-8.2,4.5-13.1c0-11.7-9.5-21.2-21.2-21.2c-7,0-13.2,3.4-17.1,8.7
+                            C96.2,29.7,90,26.2,83,26.2c-11.7,0-21.2,9.5-21.2,21.2c0,4.9,1.7,9.5,4.5,13.1H44.2c-7.6,0-13.7,6.1-13.7,13.7v17
+                            c0,6.2,4.1,11.5,9.8,13.1v46.8c0,7.4,6,13.4,13.4,13.4h44.8c0.5,0.2,1,0.3,1.6,0.3c0.6,0,1.1-0.1,1.6-0.3h44.8
+                            c7.4,0,13.4-6,13.4-13.4v-46.8c5.7-1.7,9.8-6.9,9.8-13.1v-17C169.7,66.7,163.5,60.5,156,60.5L156,60.5z M117.2,34.4
+                            c7.2,0,13,5.8,13,13c0,7.2-5.8,13-13,13h-13v-13c0,0,0,0,0,0C104.2,40.2,110,34.4,117.2,34.4L117.2,34.4z M83,34.4
+                            c7.2,0,13,5.8,13,13v13H83c0,0,0,0,0,0c-7.2,0-13-5.8-13-13C70,40.3,75.8,34.4,83,34.4L83,34.4z M38.7,91.3v-17c0-3,2.5-5.5,5.5-5.5
+                            H96v28.1H44.2C41.2,96.8,38.7,94.3,38.7,91.3L38.7,91.3z M48.5,151.2V105H96v51.5H53.7C50.9,156.4,48.5,154.1,48.5,151.2L48.5,151.2
+                            z M146.5,156.4h-42.3V105h47.5v46.3C151.7,154.1,149.3,156.4,146.5,156.4L146.5,156.4z M161.5,91.3c0,3-2.5,5.5-5.5,5.5h-51.8V68.7
+                            H156c3,0,5.5,2.5,5.5,5.5V91.3L161.5,91.3z"/>
+                        </svg>
+                    </div>
+                    <span>活动</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('ActivityLink/index')}" class="more">查看更多</a>
+                        <div class="t">线下讲堂&校园竞赛</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                        </style>
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="100" y1="175.2615" x2="100" y2="24.7387">
+                            <stop  offset="0" style="stop-color:#36AFDD"/>
+                            <stop  offset="1" style="stop-color:#74BD99"/>
+                        </linearGradient>
+                        <path class="st0" d="M183.1,123.6C183.1,123.6,183.1,123.6,183.1,123.6c-2.6,0-4.6,1.9-4.6,4.4v28.3h-44.2
+                            c-9.7-0.2-25.1,0.2-29.5,7.3v-5.5c0.2-6.8,0-16,0-16.5V53.2c0-11.5,12.5-19.6,24.6-19.6h49v66.8c0,2.4,1.9,4.4,4.3,4.4c0,0,0,0,0,0
+                            c2.4,0,4.4-1.9,4.4-4.3c0,0,0,0,0,0V24.7h-57.8c-12,0-22.7,5.8-28.8,15.7l-0.8,1.3l-0.8-1.3c-6.2-9.9-17-15.7-28.8-15.7H12.5v140.6
+                            h53.1c8.4,0,26.4,2.4,30.1,9.9h8.6c3.6-7.6,21.7-10,30.1-10h53.1V128C187.5,125.6,185.6,123.6,183.1,123.6z M95.1,56.6L95.1,56.6
+                            l0,85.3c0,0.3-0.2,9.7,0,16.5v5.5c-4.4-7.1-19.7-7.4-29.5-7.3H21.4V33.8h49c12.1,0,24.6,8.1,24.6,19.6V56.6z"/>
+                        </svg>
+                    </div>
+                    <span>云课堂</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="javascript:void(0)" class="more">查看更多</a>
+                        <div class="t">直播&录播</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                            .st2{fill:url(#SVGID_3_);}
+                            .st3{fill:url(#SVGID_4_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="102.8839" y1="171.0557" x2="102.8839" y2="9.3218">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st0" d="M162.2,9.3H43.6c-3,0-21.6,0-21.6,21.6v118.6c0,21.6,21.6,21.6,21.6,21.6h118.6c21.6,0,21.6-21.6,21.6-21.6
+                                V30.9C183.8,9.3,165.2,9.3,162.2,9.3z M162.2,160.3H43.6c0,0-10.8,0-10.8-10.8V30.9c0-10.8,7.8-10.8,10.8-10.8h118.6
+                                c3,0,10.8,0,10.8,10.8v118.6h0C173,149.5,173,160.3,162.2,160.3z"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="102.8834" y1="127.9258" x2="102.8834" y2="117.1443">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <rect x="65.1" y="117.1" class="st1" width="75.5" height="10.8"/>
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="102.8834" y1="95.5799" x2="102.8834" y2="84.7974">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <rect x="65.1" y="84.8" class="st2" width="75.5" height="10.8"/>
+                            <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="102.8834" y1="63.2326" x2="102.8834" y2="52.4509">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <rect x="65.1" y="52.5" class="st3" width="75.5" height="10.8"/>
+                        </g>
+                        </svg>
+                    </div>
+                    <span>文库</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('LibraryLink/index')}" class="more">查看更多</a>
+                        <div class="t">BIM文库</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                        </style>
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="100.3612" y1="173.062" x2="100.3612" y2="28.4026">
+                            <stop  offset="0" style="stop-color:#36AFDD"/>
+                            <stop  offset="1" style="stop-color:#74BD99"/>
+                        </linearGradient>
+                        <path class="st0" d="M199.8,69.1c0-1.8-1.1-3.3-2.6-4.1l0,0l-0.1-0.1c0,0-0.1,0-0.1,0l-94.7-36.1l0,0c-0.6-0.3-1.2-0.5-1.9-0.5
+                            c-0.7,0-1.3,0.2-1.9,0.5l0,0L3.8,64.9c0,0-0.1,0-0.1,0L3.5,65l0,0c-1.5,0.7-2.6,2.3-2.6,4.1c0,1.8,1.1,3.3,2.6,4.1l0,0l0.1,0.1
+                            c0,0,0.1,0,0.1,0l8.5,3.2l-5.7,43c-3.3,1.4-5.6,4.6-5.6,8.4c0,5,4,9,9,9c5,0,9-4,9-9c0-2.9-1.4-5.5-3.5-7.1l5.5-40.9l15.2,5.8
+                            l-8,64.3l0.1,0c0,0.2-0.1,0.4-0.1,0.6c0,2.5,2,4.5,4.5,4.5c0.3,0,0.6-0.1,1-0.2l0,0.1l34-8.5l30.1,25.8l0-0.1c0.8,0.6,1.7,1,2.7,1
+                            c0.9,0,1.7-0.3,2.5-0.8l0,0.1l34.6-26l34.2,8.6l0-0.1c0.3,0.1,0.6,0.2,1,0.2c2.5,0,4.5-2,4.5-4.5c0-0.3-0.1-0.5-0.1-0.8l0.1,0
+                            l-12-64.2L197,73.3c0,0,0.1,0,0.1,0l0.1-0.1l0,0C198.7,72.4,199.8,70.9,199.8,69.1z M167,144.4l-29.4-7.4l0,0.1
+                            c-0.3-0.1-0.6-0.2-1-0.2c-0.9,0-1.7,0.3-2.5,0.8l0-0.1l-33.5,25.1l-29.1-25l0,0.1c-0.8-0.6-1.6-1-2.7-1c-0.3,0-0.6,0.1-1,0.2l0-0.1
+                            l-29.9,7.5l6.9-55.6l53.6,20.4l0,0c0.6,0.3,1.2,0.5,1.9,0.5c0.7,0,1.3-0.2,1.9-0.5l0,0l54.2-20.6L167,144.4z M100.4,100.4L18.1,69.1
+                            l82.3-31.3l82.3,31.3L100.4,100.4z"/>
+                        </svg>
+                    </div>
+                    <span>专家</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('ExpertLink/index')}" class="more">查看更多</a>
+                        <div class="t">BIM专家</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="114.2429" y1="31.5803" x2="172.4353" y2="31.5803">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st0" d="M119.7,37H167c3,0,5.5-2.4,5.5-5.5c0-3-2.4-5.5-5.5-5.5h-47.3c-3,0-5.5,2.4-5.5,5.5
+                                C114.2,34.6,116.7,37,119.7,37z"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="12.4061" y1="100.0815" x2="186.9833" y2="100.0815">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st1" d="M159.7,47.3h-36.4c-10.4,0-16.7-5-18.6-9.4c-3.9-9.1-17.8-16-32.3-16H39.7c-15,0-27.3,12.2-27.3,27.3V151
+                                c0,15,12.2,27.3,27.3,27.3h120c15,0,27.3-12.2,27.3-27.3V74.6C187,59.6,174.7,47.3,159.7,47.3z M176.1,151c0,9-7.3,16.4-16.4,16.4
+                                h-120c-9,0-16.4-7.3-16.4-16.4V49.2c0-9,7.3-16.4,16.4-16.4h32.7c10.4,0,20.4,5,22.3,9.4c3.9,9.1,14.2,16,28.7,16h36.4
+                                c9,0,16.4,7.3,16.4,16.4V151z"/>
+                        </g>
+                        </svg>
+                    </div>
+                    <span>work</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="javascript:void(0)" class="more">查看更多</a>
+                        <div class="t">BIMWORK</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 199.2" style="enable-background:new 0 0 200 199.2;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="64.352" y1="69.8354" x2="150.1186" y2="-15.9312">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st0" d="M23.3,27c0,2.4,1.9,4.3,4.3,4.3l159.5,0c1.1,0,2.1-0.4,2.9-1.2c1.7-1.7,1.7-4.4,0-6.1
+                                c-0.8-0.8-1.9-1.2-2.9-1.2l-159.5,0C25.2,22.6,23.3,24.6,23.3,27z"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="10.5589" y1="192.9197" x2="191.2244" y2="12.2542">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st1" d="M182.8,44.2L27.6,44.2c-9.5,0-17.2-7.7-17.2-17.2S18,9.7,27.6,9.7l150.9,0c1.1,0,2.1-0.4,2.9-1.2
+                                c1.7-1.7,1.7-4.4,0-6.1c-0.8-0.8-1.9-1.2-2.9-1.2l-151.6,0C13,1.6,1.9,12.8,1.7,26.7v147c0.1,14.1,11.6,25.5,25.7,25.6l155.3,0
+                                c9.5-0.1,17.1-7.7,17.1-17.2V61.5C199.8,52,192.2,44.4,182.8,44.2z M191.2,182c0,4.8-3.9,8.6-8.6,8.6h-155
+                                c-9.5,0-17.2-7.7-17.2-17.2V46.2c4.4,3.9,11,6.4,17.2,6.6l155,0c4.8,0,8.6,3.9,8.6,8.6V182z"/>
+                        </g>
+                        </svg>
+                    </div>
+                    <span>作品集</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('ArticleLink/index',array('tid'=>1))}" class="more">查看更多</a>
+                        <div class="t">BIM作品集</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                            .st2{fill:url(#SVGID_3_);}
+                            .st3{fill:url(#SVGID_4_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="141.3" y1="176.0001" x2="141.3" y2="106.7001">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st0" d="M146,108.7c-1.3-1.4-3-2-4.7-2s-3.3,0.7-4.7,2l-28,28c-2.7,2.7-2.7,6.7,0,9.3l28,28c1.3,1.3,3,2,4.7,2
+                                s3.3-0.7,4.7-2l28-28c2.7-2.7,2.7-6.7,0-9.3L146,108.7z M141.3,165.9l-24.6-24.6l24.6-24.6l24.6,24.6L141.3,165.9z"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="141.3" y1="96.6001" x2="141.3" y2="27.3001">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st1" d="M136.6,94.6c1.3,1.3,3,2,4.7,2s3.3-0.7,4.7-2l28-28c2.7-2.7,2.7-6.7,0-9.3l-28-28c-1.3-1.3-3-2-4.7-2
+                                c-1.7,0-3.3,0.7-4.7,2l-28,28c-2.7,2.7-2.7,6.7,0,9.3L136.6,94.6z M141.3,37.4L165.9,62l-24.6,24.6L116.7,62L141.3,37.4z"/>
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="61.3" y1="176.0001" x2="61.3" y2="106.7001">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st2" d="M66,108.7c-1.3-1.4-3-2-4.7-2s-3.3,0.7-4.7,2l-28,28c-2.7,2.7-2.7,6.7,0,9.3l28,28c1.3,1.3,3,2,4.7,2
+                                s3.3-0.7,4.7-2l28-28c2.7-2.7,2.7-6.7,0-9.3L66,108.7z M61.3,165.9l-24.6-24.6l24.6-24.6l24.6,24.6L61.3,165.9z"/>
+                            <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="61.3" y1="96.0001" x2="61.3" y2="26.7001">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st3" d="M66,28.7c-1.3-1.4-3-2-4.7-2c-1.7,0-3.3,0.7-4.7,2l-28,28c-2.7,2.7-2.7,6.7,0,9.3l28,28c1.3,1.3,3,2,4.7,2
+                                s3.3-0.7,4.7-2l28-28c2.7-2.7,2.7-6.7,0-9.3L66,28.7z M61.3,85.9L36.7,61.3l24.6-24.6l24.6,24.6L61.3,85.9z"/>
+                        </g>
+                        </svg>
+                    </div>
+                    <span>软件</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('DownloadLink/index')}" class="more">查看更多</a>
+                        <div class="t">软件下载&模型下载</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                            .st2{fill:url(#SVGID_3_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="100.025" y1="140.8228" x2="100.025" y2="154.5683">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <rect x="93.1" y="140.8" class="st0" width="13.8" height="13.7"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="99.9977" y1="54.5501" x2="99.9977" y2="130.3592">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st1" d="M123.2,62.4c-5.7-5.2-13.4-7.9-23.1-7.9c-9.1,0-16.4,2.4-21.9,7.3c-5.5,4.9-8.9,11.9-10,21.1l12.4,1.5
+                                c1.1-6.8,3.3-11.9,6.8-15.1c3.5-3.2,7.8-4.8,12.9-4.8c5.3,0,9.8,1.8,13.5,5.3c3.7,3.5,5.5,7.7,5.5,12.4c0,2.6-0.6,5-1.9,7.2
+                                c-1.2,2.2-4,5.1-8.2,8.8c-4.2,3.7-7.1,6.5-8.7,8.4c-2.2,2.6-3.8,5.3-4.8,7.9c-1.3,3.4-2,7.5-2,12.3c0,0.8,0,2,0.1,3.6v0h11.6
+                                c0.1-4.8,0.4-8.3,1-10.5c0.6-2.1,1.5-4,2.7-5.7c1.2-1.7,3.8-4.2,7.7-7.7c5.9-5.2,9.8-9.6,11.8-13.2s3-7.6,3-11.9
+                                C131.8,74,128.9,67.6,123.2,62.4z"/>
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="100" y1="1.220703e-04" x2="100" y2="200.0001">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st2" d="M100,0C44.9,0,0,44.9,0,100c0,55.1,44.8,100,100,100c55.1,0,100-44.9,100-100S155.1,0,100,0z M100,190.5
+                                c-49.9,0-90.5-40.6-90.5-90.5C9.5,50.1,50.1,9.5,100,9.5s90.5,40.6,90.5,90.5C190.5,149.9,149.9,190.5,100,190.5z"/>
+                        </g>
+                        </svg>
+                    </div>
+                    <span>知道</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="javascript:void(0)" class="more">查看更多</a>
+                        <div class="t">BIM知道</div>
+                    </div>
+                </div>
+            </div>
+            <div class="comb">
+                <div class="a">
+                    <div class="icon">
+                        <svg x="0px" y="0px"
+                             viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0{fill:url(#SVGID_1_);}
+                            .st1{fill:url(#SVGID_2_);}
+                            .st2{fill:url(#SVGID_3_);}
+                            .st3{fill:url(#SVGID_4_);}
+                            .st4{fill:url(#SVGID_5_);}
+                            .st5{fill:url(#SVGID_6_);}
+                        </style>
+                        <g>
+                            <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="100" y1="154.5455" x2="100" y2="145.4547">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st0" d="M153,145.5h-3h-3H53h-3h-3c-2.5,0-4.5,2-4.5,4.5c0,2.5,2,4.5,4.5,4.5h3h3H147h3h3c2.5,0,4.5-2,4.5-4.5
+                                C157.6,147.5,155.5,145.5,153,145.5z"/>
+                            <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="100" y1="124.2425" x2="100" y2="115.1516">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st1" d="M153,115.2h-3h-3H53h-3h-3c-2.5,0-4.5,2-4.5,4.5c0,2.5,2,4.5,4.5,4.5h3h3H147h3h3c2.5,0,4.5-2,4.5-4.5
+                                S155.5,115.2,153,115.2z"/>
+                            <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="71.2121" y1="103.0304" x2="71.2121" y2="45.4547">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st2" d="M48.8,103h44.8c3.5,0,6.4-2.8,6.4-6.4V51.8c0-3.5-2.8-6.4-6.4-6.4H48.8c-3.5,0-6.4,2.8-6.4,6.4v44.8
+                                C42.4,100.2,45.3,103,48.8,103z M51.5,59.1c0-2.5,2-4.5,4.5-4.5h30.3c2.5,0,4.5,2,4.5,4.5v30.3c0,2.5-2,4.5-4.5,4.5H56.1
+                                c-2.5,0-4.5-2-4.5-4.5V59.1z"/>
+                            <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="133.3333" y1="93.9395" x2="133.3333" y2="84.8486">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st3" d="M153,84.8h-3h-33.3h-3c-2.5,0-4.5,2-4.5,4.5s2,4.5,4.5,4.5h3H150h3c2.5,0,4.5-2,4.5-4.5S155.5,84.8,153,84.8z"
+                                />
+                            <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="100" y1="187.8789" x2="100" y2="12.1213">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st4" d="M174.2,12.1H25.8c-5.9,0-10.6,4.7-10.6,10.6v154.5c0,5.9,4.7,10.6,10.6,10.6h148.5c5.9,0,10.6-4.7,10.6-10.6
+                                V22.7C184.8,16.9,180.1,12.1,174.2,12.1z M175.8,172.4c0,3.5-2.9,6.4-6.4,6.4H30.6c-3.5,0-6.4-2.8-6.4-6.4V27.6
+                                c0-3.5,2.9-6.4,6.4-6.4h138.8c3.5,0,6.4,2.8,6.4,6.4V172.4z"/>
+                            <linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="133.3333" y1="63.6365" x2="133.3333" y2="54.5455">
+                                <stop  offset="0" style="stop-color:#36AFDD"/>
+                                <stop  offset="1" style="stop-color:#74BD99"/>
+                            </linearGradient>
+                            <path class="st5" d="M153,54.5h-3h-33.3h-3c-2.5,0-4.5,2-4.5,4.5s2,4.5,4.5,4.5h3H150h3c2.5,0,4.5-2,4.5-4.5S155.5,54.5,153,54.5z"
+                                />
+                        </g>
+                        </svg>
+                    </div>
+                    <span>资讯</span>
+                </div>
+                <div class="b">
+                    <div class="bg"></div>
+                    <div class="con">
+                        <a href="{:U('NewsLink/index')}" class="more">查看更多</a>
+                        <div class="t">会议新闻&行业资讯</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Common:footer"/>
+</div>
+<include file="Common:float"/>
+
+<script>
+    //宇宙特效
+    "use strict";
+    var canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d'),
+            w = canvas.width = window.innerWidth,
+            h = canvas.height = window.innerHeight,
+
+            hue = 217,
+            stars = [],
+            count = 0,
+            maxStars = 1300;//星星数量
+
+    var canvas2 = document.createElement('canvas'),
+            ctx2 = canvas2.getContext('2d');
+    canvas2.width = 100;
+    canvas2.height = 100;
+    var half = canvas2.width / 2,
+            gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+    gradient2.addColorStop(0.025, '#CCC');
+    gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+    gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+    gradient2.addColorStop(1, 'transparent');
+
+    ctx2.fillStyle = gradient2;
+    ctx2.beginPath();
+    ctx2.arc(half, half, half, 0, Math.PI * 2);
+    ctx2.fill();
+
+    // End cache
+
+    function random(min, max) {
+        if (arguments.length < 2) {
+            max = min;
+            min = 0;
+        }
+
+        if (min > max) {
+            var hold = max;
+            max = min;
+            min = hold;
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function maxOrbit(x, y) {
+        var max = Math.max(x, y),
+                diameter = Math.round(Math.sqrt(max * max + max * max));
+        return diameter / 2;
+        //星星移动范围，值越大范围越小，
+    }
+
+    var Star = function() {
+
+        this.orbitRadius = random(maxOrbit(w, h));
+        this.radius = random(60, this.orbitRadius) / 8;
+        //星星大小
+        this.orbitX = w / 2;
+        this.orbitY = h / 2;
+        this.timePassed = random(0, maxStars);
+        this.speed = random(this.orbitRadius) / 50000;
+        //星星移动速度
+        this.alpha = random(2, 10) / 10;
+
+        count++;
+        stars[count] = this;
+    }
+
+    Star.prototype.draw = function() {
+        var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+                y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+                twinkle = random(10);
+
+        if (twinkle === 1 && this.alpha > 0) {
+            this.alpha -= 0.05;
+        } else if (twinkle === 2 && this.alpha < 1) {
+            this.alpha += 0.05;
+        }
+
+        ctx.globalAlpha = this.alpha;
+        ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+        this.timePassed += this.speed;
+    }
+
+    for (var i = 0; i < maxStars; i++) {
+        new Star();
+    }
+
+    function animation() {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 0.5; //尾巴
+        ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+        ctx.fillRect(0, 0, w, h)
+
+        ctx.globalCompositeOperation = 'lighter';
+        for (var i = 1, l = stars.length; i < l; i++) {
+            stars[i].draw();
+        };
+
+        window.requestAnimationFrame(animation);
+    }
+
+    animation();
+</script>
+<script>
+    $('.search-content .show').click(function () {
+        var status = $('.search-content .select-opt').attr('data-status');
+        if (status == 'close') {
+            $('.search-content .select-opt').addClass('select-opt-active');
+            $('.search-content .select-opt').attr('data-status', 'open');
+        } else {
+            $('.search-content .select-opt').removeClass('select-opt-active');
+            $('.search-content .select-opt').attr('data-status', 'close');
+        }
+    });
+    $('body').click(function (e) {
+        var status = $('.search-content .select-opt').attr('data-status');
+        var tag = e.target;
+        if ($(tag).parents('.select').length == 0) {
+            if (status == 'open') {
+                $('.search-content .select-opt').removeClass('select-opt-active');
+                $('.search-content .select-opt').attr('data-status', 'close');
+            }
+        }
+    });
+    $('.select-opt span').click(function () {
+        var val = $(this).attr('data-val');
+        var text = $(this).text();
+        $('.select-opt span').removeClass('active');
+        $(this).addClass('active');
+        $('.select .hidden').val(val);
+        $('.select .show').text(text);
+        $('.search-content .select-opt').removeClass('select-opt-active');
+        $('.search-content .select-opt').attr('data-status', 'close');
+    });
+    $('.comb').append('<svg class="comb-border"  x="0px" y="0px"viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">'+
+            '<style type="text/css">'+
+    '.st0{fill:url(#SVGID_1_);}'+
+    '</style>'+
+    '<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.9229" y1="100.65" x2="197.5771" y2="100.65">'+
+            '<stop  offset="0" style="stop-color:#36AFDD"/>'+
+            '<stop  offset="1" style="stop-color:#74BD99"/>'+
+            '</linearGradient>'+
+            '<path class="st0" d="M148.5,15.7l-0.1-0.2H50l-48.9,85l-0.1,0.2l48.9,84.9l0.1,0.2h98.4l49-84.8l0.1-0.3L148.5,15.7z M147.8,184.8H50.6L2.1,100.7l48.5-84.2h97.2l48.6,84.2L147.8,184.8z"/>'+
+    '</svg>');
+    $('.comb .b .bg').append('<svg x="0px" y="0px" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">'+
+            '<style type="text/css">.st0{fill:url(#SVGID_1_);}</style>'+
+            '<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="50.3398" y1="185.3486" x2="148.1133" y2="16">'+
+            '<stop  offset="0" style="stop-color:#36AFDD"/>'+
+            '<stop  offset="1" style="stop-color:#74BD99"/>'+
+            '</linearGradient>'+
+            '<polygon class="st0" points="148.1,16 50.3,16 1.5,100.7 50.3,185.3 148.1,185.3 197,100.7 "/>'+
+            '</svg>');
+
+    for(var i = 0; i < 11; i++) {
+        if(i == 10) {
+            $('.scroll-num').append('<li>' + 0 +'</li>');
+        }else{
+            $('.scroll-num').append('<li>' + i +'</li>');
+        }
+    }
+    setTimeout(function () {
+        $('.scroll-num').each(function () {
+            var _this = this;
+            $(this).animate({top: '-' + 300 + 'px'},600, function () {
+                $(_this).css({top: '-' + 0 + 'px'});
+                var n = $(_this).attr('data-val');
+                var top = n * 30;
+                $(_this).animate({top: '-' + top + 'px'},{
+                    easing: 'easeOutQuad',
+                    duration: 500,
+                });
+            });
+        })
+    },200);
+</script>
+</body>
+</html>

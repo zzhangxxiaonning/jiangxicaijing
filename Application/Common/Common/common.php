@@ -17,17 +17,22 @@
  * 计算时间差（天小时分钟秒）
  * time2string（）
  *
- * 微信扫码登陆
- * Wechat（）
  *
+ * 得到表信息
+ * sql_info()
  *
+ * 生成订单号
+ * create_oid()
  *
+ * 删除数据元素
+ * array_remove()
  *
+ * base64转
+ * base2img()
  *
+ * url请求
+ * curl_request()
  *
- *
- *
-
 **/
 function get_driverorder_status($id){
 	$data = C('drive_order_type');
@@ -94,7 +99,14 @@ function _Numbers($model,$map=''){
     return $thumbs_count;
 }
 
+/*
+ * 获取所有的表信息
+ * */
+function infos($model,$map='',$order='id desc',$field='*',$limit=5){
+    $data = $model -> field($field) -> where($map) -> order($order) -> limit($limit) -> select();
+    return $data;
 
+}
 
 /*
  * PHP 计算时间差（天小时分钟秒）

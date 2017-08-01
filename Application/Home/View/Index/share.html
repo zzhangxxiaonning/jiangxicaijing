@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>熊猫集赞</title>
+	<meta charset="utf-8">
+	<meta name="Keywords" content="熊猫集赞">
+	<meta name="description" content="熊猫集赞">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <link href="{$public}wap/css/animate.css" type="text/css" rel="stylesheet">
+	<link href="{$public}wap/css/css.css" type="text/css" rel="stylesheet">
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="{$public}wap/layer/layer.js"></script>
+</head>
+<body class="main-contanier">
+	<div class="content-box" style="background: url({$public}wap/images/bg_60.png);">
+        <div class="block animate zoomIn block-1">
+            <div class="dot-bg"><img src="{$public}wap/images/dian.png"></div>
+            <div class="content">
+                <div class="animate line-1 fadeInUp delay13">
+                    <img src="{$public}wap/images/yifenzhong.png">
+                </div>
+                <div class="animate line-2 bounceInDown delay08">
+                    <img src="{$public}wap/images/dudong.png">
+                </div>
+                <div class="animate line-3 fadeInUp delay18">
+                    <img src="{$public}wap/images/chengshiqingnianyuanmengjia.png">
+                </div>
+            </div>
+        </div>
+        <div class="block block-2">
+            <div class="dot-bg animate delay25 fadeIn"><img src="{$public}wap/images/dian.png"></div>
+            <div class="content animate flipInX delay25">
+                <div class="line-1">
+                    <img src="{$public}wap/images/map.png">
+                </div>
+            </div>
+        </div>
+        <div class="block block-3">
+            <div class="dot-bg animate fadeIn delay30"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate delay30 fadeInLeft"><span>中央公园</span></h3>
+            <div class="content animate fadeIn delay30">
+                <div class="line-1 animate fadeIn delay30">
+                    <img src="{$public}wap/images/01.png">
+                </div>
+                <div class="text animate fadeInDown delay34">将自然融入生活。<br>城市核心CBD公园旁,</div>
+                <div class="l-bg animate zoomIn delay36"><img src="{$public}wap/images/819071229242400452.png"></div>
+            </div>
+        </div>
+        <div class="block block-4">
+            <div class="dot-bg animate" data-an="fadeIn delay05"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate " data-an="delay11 fadeInLeft"><span>住着很重要，品质居住更重要</span></h3>
+            <div class="content animate " data-an="fadeIn delay05">
+                <div class="line-1 animate " data-an="fadeIn delay05">
+                    <img src="{$public}wap/images/02.png">
+                </div>
+                <div class="text animate " data-an="fadeInDown delay11">生活就要全免费！<br>北京最大公寓生活区,<br>511m<sup>2</sup></div>
+                <div class="l-bg animate " data-an="zoomIn delay13"><img src="{$public}wap/images/375134379002129624.png"></div>
+            </div>
+        </div>
+        <div class="block block-5">
+            <div class="dot-bg animate" data-an="fadeIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate" data-an="delay11 fadeInLeft"><span>8大公区，各有不同</span></h3>
+            <div class="clearfix">
+                <div class="text-content clearfix" >
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>阳光健身区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">倾听身体欢快的语言。<br>慰劳身体，</div>
+                </div>
+                <div class="content animate" data-an="fadeIn delay09">
+                    <div class="line-1 animate" data-an="fadeIn delay09">
+                        <img src="{$public}wap/images/s-01.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-6">
+            <div class="dot-bg animate" data-an="fadeIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>咖啡休息区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">阅读时光。<br>享受咖啡、美食或者<br>休息、畅想、漫步、</div>
+                </div>
+                <div class="content animate"  data-an="fadeIn delay09">
+                    <div class="line-1 animate" data-an="fadeIn delay09">
+                        <img src="{$public}wap/images/s-02.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-7">
+            <div class="dot-bg animate" data-an="fadeIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>快递收发区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">成剁手达人。<br>安全，快捷，把你养成</div>
+                </div>
+                <div class="content animate" data-an="flipInY delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-03.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-8">
+            <div class="dot-bg animate" data-an="fadeIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>电玩娱乐区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">游戏，让您沉浸其中。<br>极具娱乐与刺激性的</div>
+                </div>
+                <div class="content animate" data-an="flipInY delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-02.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-9">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>科技体验区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">前沿最时尚的乐趣。<br>见所未见，感受科技</div>
+                </div>
+                <div class="content animate" data-an="lightSpeedIn delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-04.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-10">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>无人超市区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">我们从内心拥抱自由。<br>开放式无人监守超市</div>
+                </div>
+                <div class="content animate" data-an="rotateInDownLeft delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-05.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-9">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>按摩休息区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">舒适，洗去疲惫。<br>给您一个空间，高雅</div>
+                </div>
+                <div class="content animate" data-an="bounceInUp delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-06.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-10">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <div class="clearfix">
+                <div class="text-content clearfix">
+                    <div class="t animate" data-an="fadeInDownBig delay07"><span>阅读体验区</span></div>
+                    <div class="tt animate" data-an="fadeIn delay15">本的精华，陶冶自我。<br>理解，领悟，吸收书</div>
+                </div>
+                <div class="content animate" data-an="bounceInUp delay09">
+                    <div class="line-1">
+                        <img src="{$public}wap/images/s-07.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block block-11">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate" data-an="bounceInLeft delay02"><span style="font-size: 13px;">【百变】何止户型【品质】何止居住</span></h3>
+            <div class="content animate" data-an="zoomIn delay06">
+                <div class="line-1 animate" data-an="bounceInUp delay09">
+                    <img src="{$public}wap/images/03.png">
+                    <div class="a-t a-t-1"><i></i>家具家电齐备</div>
+                    <div class="a-t a-t-2"><i></i>EO顶级环保生态板</div>
+                    <div class="a-t a-t-3"><i></i>3种风格户型，任君挑选</div>
+                </div>
+                <div class="l-bg animate" data-an="zoomIn delay12"><img src="{$public}wap/images/819071229242400452.png"></div>
+            </div>
+        </div>
+        <div class="block block-12">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate" data-an="bounceInRight delay02"><span>美式风格--工大桥</span></h3>
+            <div class="content animate" data-an="zoomIn delay06">
+                <div class="line-1 animate" data-an="bounceInDown delay09">
+                    <img src="{$public}wap/images/04.png">
+                </div>
+                <div class="text animate" data-an="bounceInRight delay12">就另一种休闲式浪漫。<br>作的修饰与约束，成<br>且不羁，无需太多造<br>自由、自在、随意并</div>
+                <div class="l-bg animate" data-an="zoomIn delay12"><img src="{$public}wap/images/375134379002129624.png"></div>
+            </div>
+        </div>
+        <div class="block block-13">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate" data-an="bounceInLeft delay02"><span>都市风格--工大桥</span></h3>
+            <div class="content animate" data-an="zoomIn delay06">
+                <div class="line-1 animate" data-an="bounceInDown delay09">
+                    <img src="{$public}wap/images/06.png">
+                </div>
+                <div class="text animate" data-an="bounceInLeft delay12">给你最意外的惊喜。<br>艺,用最都市的解构,<br>都市线条、色彩和铁</div>
+                <div class="l-bg animate" data-an="zoomIn delay12"><img src="{$public}wap/images/819071229242400452.png"></div>
+            </div>
+        </div>
+        <div class="block block-12">
+            <div class="dot-bg animate" data-an="zoomIn delay15"><img src="{$public}wap/images/dian.png"></div>
+            <h3 class="title clearfix animate" data-an="bounceInRight delay02"><span>日式风格--工大桥</span></h3>
+            <div class="content animate" data-an="zoomIn delay06">
+                <div class="line-1 animate" data-an="bounceInDown delay09">
+                    <img src="{$public}wap/images/05.png">
+                </div>
+                <div class="text animate" data-an="bounceInRight delay12">然自得的生活意境。<br>独特，给您休闲、悠<br>清新、自然、简洁、</div>
+                <div class="l-bg animate" data-an="zoomIn delay12"><img src="{$public}wap/images/375134379002129624.png"></div>
+            </div>
+        </div>
+        <div class="block block-down animate" data-an="zoomInDown delay05">
+            <a href=""><img src="{$public}wap/images/sddd.png"></a>
+        </div>
+        <div class="block zan-block">
+            <div class="a animate" data-an="fadeIn delay05">
+                <img src="{$wap_mem.thumb}" class="avatar">
+                <span class="name">{$wap_mem.nickname},</span>
+                <i>喜欢就点个赞吧！</i>
+            </div>
+            <div class="b animate" data-an="fadeIn delay07">
+                已有<i id="num">{$other.num}</i>人点赞
+            </div>
+            <div class="c animate" data-an="zoomIn delay09">
+                <a href="javascript:thumbs();" class="zan"><img src="{$public}wap/images/zan.png"></a>
+				<input type="hidden" id="mem_id" value="{$wap_mem.openid}">
+				<input type="hidden" id="other_id" value="{$other.openid}">
+            </div>
+			<div class="div_my_zan">
+				<a href="{:U('Index/share',array('id'=>$wap_mem['openid'],'type'=>I('get.type')))}" id="mem_share">
+				<button class="my_zan" type="button"><div class="jizan">我也要集赞</div><img src="{$public}wap/images/share.png" class="share"></button>
+				</a>
+				<!--<button class="my_zan" type="button"><div class="jizan">我也要集赞</div><img src="{$public}wap/images/share.png" class="share"></button>-->
+            </div>
+			
+			<style>
+				.div_my_zan{
+					margin: 0 auto;
+					width: 100%;
+					height: 100%;
+				}
+				.my_zan{
+					border: 1px solid #d5d5d5;
+					width: 300px;
+					height: 40px;
+					border-radius: 30px;
+					
+					background:white;
+					margin: 0 auto;
+					display: block;
+					margin-bottom: 30px;
+				}
+				.jizan{
+					float: left;
+					margin-left: 100px;
+					height: 35px;
+					line-height: 35px;
+					color: #666;
+					font-size: 15px;
+					font-family: "Microsoft YaHei",微软雅黑;
+				}
+				.share{
+					margin-right: 80px;
+					width: 25px;
+					height: 25px;
+					margin-top: 5px;
+				}				
+			</style>
+			
+        </div>
+	</div>
+</body>
+<script>
+    $(function(){
+        var ua = navigator.userAgent;
+        var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+        iniDocSize = function(){
+            if(isMobile) {
+                var deviceWidth = $(window).width();
+                var deviceHeight = window.screen.height;
+                if(deviceHeight > deviceWidth){
+                    if(deviceWidth < 960){
+                        var rem = (deviceWidth/10);
+                    }else{
+                        var rem = 36;
+                    }
+                }else{
+                    var rem = (deviceWidth/10);
+                }
+                $("html").css("font-size",rem + "px");
+            }else{
+                $("html").css("font-size","56px");
+            }
+        };
+
+        iniDocSize();
+        $(window).resize(function(){
+            iniDocSize();
+        });
+
+
+        function easeIn() {
+            var windowHeiht = $(window).height();
+            $('.animate').each(function () {
+                var top = this.getBoundingClientRect().top;
+                if(top < windowHeiht) {
+                    var animate = $(this).attr('data-an') || '';
+                    $(this).addClass(animate + ' animated');
+                }
+            });
+        }
+        $(document).on('scroll', function (e) {
+            easeIn();
+        });
+        easeIn();
+    });
+</script>
+
+<script type="text/javascript">
+	
+	//点赞
+    function thumbs(mem_id,other_id){
+		var mem_id = $('#mem_id').val();
+		var other_id = $('#other_id').val();
+		var type = {:I('get.type')};
+        $.ajax({
+            type: 'post',
+            url: "{:U('thumbs')}",
+            data: {
+                'mem_id':mem_id,
+                'other_id':other_id,
+                'type':type,
+            },
+			
+            success: function(data) {
+                console.log(data);
+				if(data.status == 1){
+					
+					layer.msg(''+data.info+'',{time:2000},function(){
+                        $('#num').text(data.num);
+						$(this).attr('href', 'javascript:void(0);');
+                    });
+                }else{
+					layer.msg(''+data.info+'',{time:2000},function(){$public});
+				}
+            }
+        },'json');
+	
+	}
+	
+
+</script>
+
+
+<script>
+  /*
+   * 注意：
+   * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+   * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+   * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+   *
+   * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+   * 邮箱地址：weixin-open@qq.com
+   * 邮件主题：【微信JS-SDK反馈】具体问题
+   * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+   */
+    wx.config({
+      debug: false,
+      appId: 'wx4445d003dbaff66d',
+      timestamp: 1493902073,
+      nonceStr: 'Wm3WZYTPz0wzccnW',
+      signature: {$signature},
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'onMenuShareQZone',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onVoiceRecordEnd',
+        'playVoice',
+        'onVoicePlayEnd',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+      ]
+    });
+    wx.ready(function(){
+		var id = {:I('get.id')};
+        var type = {:I('get.type')};
+        var link = 'http://putao.ibangoo.com/Index/share/id/'+id+'/type/'+type+'.html';
+        wx.onMenuShareAppMessage({
+            title: 'aaa', // 分享标题
+            desc: 'bbbb', // 分享描述
+            link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://putao.ibangoo.com/Source/home/wap/images/dudong.png', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                alert('分享成功');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+                alert('分享失败');
+            }
+        });
+		wx.checkJsApi({
+			jsApiList: ['onMenuShareQQ'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+			success: function(res) {
+				console.log(res);
+				// 以键值对的形式返回，可用的api值true，不可用为false
+				// 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+			}
+		});
+		
+		
+	});
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</script>
+
+
+
+</html>
+	

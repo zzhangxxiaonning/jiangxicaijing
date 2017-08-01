@@ -8,7 +8,7 @@ $config = array(
 	**/
 	'LOAD_EXT_CONFIG'	=>	'db,cache,type,route',
 	'LOAD_EXT_FILE'	=>	'common,string,oauth',
-	'MODULE_ALLOW_LIST' => array('Home','Sysadmin','Api'),
+	'MODULE_ALLOW_LIST' => array('App','Home','Sysadmin','Api'),
 	'URL_PATHINFO_FETCH' => '2',
 	'URL_MODEL'	=>	2,
 	// 'TMPL_EXCEPTION_FILE'	=> '404.html',

@@ -1,0 +1,53 @@
+<include file="Common:header"/>
+    <div style="text-align:center;">
+        <img alt="注册扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data={$code_url}" style="width:230px;height:230px;display:block;margin:10% auto;"/>
+
+    </div>
+    <input type="hidden" id="getid" value="{:I('get.id')}">
+
+<script type="text/javascript">
+
+    var id = $("#getid").val();
+    //定时执行刷新任务
+    setInterval(function(){
+        refresh(id);
+    },3000);
+
+    //查询是否支付完成，支付完成加入缓存
+    function refresh(id){
+
+        $.ajax({
+            type: 'post',
+            url: "{:U('Ajaxjson/refresh')}",
+            data: {
+                'id':id,
+                'type':type,
+                'uid':uid,
+                'cat_id':cat_id,
+            },
+            success: function(data) {
+//                console.log(data);
+                if(data.status){
+                    layer.msg(data.info,{time:2000},function(){
+                        location.href = data.url;
+
+                    });
+                }
+            }
+        },'json');
+
+
+//        $.post("{:U('Ajaxjson/refresh')}",{'id':id},function(data){
+//            if(data.status){
+//                layer.msg(data.info,{time:2000},function(){
+//                    location.href = data.url;
+//
+//                });
+//            }
+//        },'json');
+
+    }
+
+
+
+</script>

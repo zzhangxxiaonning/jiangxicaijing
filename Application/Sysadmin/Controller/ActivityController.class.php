@@ -137,6 +137,10 @@ class ActivityController extends CommonController {
                 $lists[$m]['admin_name'] = $this->admin_name($v['admin_id']);
             }
 
+            //推荐
+            $flag=String2Array($v['flag']);
+            $lists[$m]['flag'] = $flag;
+
 		}
 		
 		$this->assign('lists',$lists);
@@ -169,6 +173,11 @@ class ActivityController extends CommonController {
 				if(!$_db->create()){
 					$this->error($_db->getError().'');
 				}else{
+                    //推荐
+                    if($flag = I('post.flag')){
+                        $_db->flag=Array2String($flag);
+                    }
+
                     //多图处理
                     if($img = I('post.img')){
                         $_db->img=Array2String($img);
@@ -224,6 +233,9 @@ class ActivityController extends CommonController {
                     if($img = I('post.img')){
                         $_db->img=Array2String($img);
                     }
+
+                    $_db->flag=Array2String(I('post.flag'));
+
 					$ret = $_db->where($map)->save();
 					if($ret){
 						
@@ -251,6 +263,10 @@ class ActivityController extends CommonController {
 
             $img=String2Array($info['img']);
             $this->assign('img',$img);
+
+            //推荐
+            $flag=String2Array($info['flag']);
+            $this->assign('flag',$flag);
 
             //机构
             $app_list = M('Actapp')->where(array('up_id'=>array('eq',0),'status'=>array('eq',1)))->order('sort desc,id asc')->select();

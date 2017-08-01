@@ -54,13 +54,14 @@
 							<!-- 自定内容 -->
 							<div class="table_list">
 								<table class="table" cellspacing="0" class="table_form">
-									<tr>
-										<td class="col-xs-2">备份分卷大小</td>
-										<td>
-											<input type="text" name="sizelimit" value="{$sizelimit}" size="10"> K
-											&nbsp;&nbsp;(推荐10M以下)
-										</td>
-									</tr>
+									<!--<tr>-->
+										<!--<td class="col-xs-2">备份分卷大小</td>-->
+										<!--<td>-->
+											<!--<input type="text" name="sizelimit" value="{$sizelimit}" size="10"> K-->
+											<!--&nbsp;&nbsp;(推荐10M以下)-->
+										<!--</td>-->
+									<!--</tr>-->
+									<input type="hidden" name="sizelimit" value="{$sizelimit}" size="10">
 									<tr>
 										<td>备份名称</td>
 										<td><input type="text" name="backup_name" value="{$backup_name}"></td>

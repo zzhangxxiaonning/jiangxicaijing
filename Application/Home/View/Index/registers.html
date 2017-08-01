@@ -1,0 +1,181 @@
+
+<include file="Common:header"/>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<body style="overflow: hidden">
+<div class="login-wrap">
+    <div class='stars'></div>
+    <div class='stars2'></div>
+    <div class='stars3'></div>
+    <div class='stars s-stars'></div>
+    <div class='stars2 s-stars'></div>
+    <div class='stars3 s-stars'></div>
+    <div class="nav-wrap">
+        <div class="nav"><img src="{$public}images/indexlogo.png" class="logo"></div>
+    </div>
+    <img src="{$public}images/dlbg.jpg" class="bg">
+    <div class="center-pic"><img src="{$public}images/dl2.png"></div>
+    <div class="btn-item clearfix">
+        <a href="{:U('Index/login')}" class="btn login animate">登录</a>
+        <a href="{:U('Index/register')}" class="btn reg animate">注册成为会员</a>
+    </div>
+    <div class="dialog-wrap">
+        <div class="mask"></div>
+        <div class="dialog reg-dialog dialog-show">
+            <img alt="注册扫码支付" src="http://paysdk.weixin.qq.com/example/qrcode.php?data={$code_url}" class="qr pay_qrcode">
+            <div class="text">请微信扫描注册成为会员</div>
+            <div class="todo">已有账号，<a href="">去登录</a></div>
+        </div>
+        <div class="dialog login-dialog">
+            <div class="tab-wrap clearfix">
+                <a href="javascript:void(0);" class="cur">微信登录</a>
+                <a href="javascript:void(0);">手机登录</a>
+            </div>
+            <div class="tab-content cur-content">
+                <img src="{$public}images/rgqr.png" class="qr">
+                <div class="text">请微信扫描注册成为会员</div>
+                <div class="todo"><a href="">注册成为会员</a></div>
+            </div>
+            <div class="tab-content">
+                <div class="input-row"><input type="text" class="text-input phone" placeholder="请输入手机号码"></div>
+                <div class="input-row clearfix">
+                    <input type="text" class="code-input code" placeholder="请输入验证码">
+                    <button class="get-code">获取验证码</button>
+                </div>
+                <button class="submit">登 录</button>
+                <div class="todo"><a href="">注册成为会员</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*$('.login').click(function () {
+            $('.dialog-wrap').show();
+            $('.dialog-show').removeClass('dialog-show');
+            setTimeout(function () {
+                $('.login-dialog').addClass('dialog-show');
+            })
+        });
+
+        $('.reg').click(function () {
+            $('.dialog-wrap').show();
+            $('.dialog-show').removeClass('dialog-show');
+            setTimeout(function () {
+                $('.reg-dialog').addClass('dialog-show');
+            })
+        });*/
+        $('.mask').click(function () {
+            $('.dialog-show').removeClass('dialog-show');
+            setTimeout(function () {
+                $('.dialog-wrap').hide();
+            },400)
+        });
+        function snackbar(text, time) {
+            $('.login-wrap .snackbar').remove();
+            $('.login-wrap').append('<div class="snackbar">'+ text +'</div>');
+            setTimeout(function () {
+                $('.login-wrap .snackbar').remove();
+            },time)
+        }
+
+        function vPhone() {
+            var texfeild = $('.phone');
+            var val = texfeild.val();
+            if(val) {
+                var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+                if(reg.test(val)) {
+                    return true;
+                }else{
+                    snackbar('手机号码格式不正确', 1500);
+                    return false;
+                }
+            }else{
+                snackbar('请输入手机号', 1500);
+                return false;
+            }
+        }
+
+        function vCode() {
+            var texfeild = $('.code');
+            var val = texfeild.val();
+            if(val) {
+                return true;
+            }else{
+                snackbar('请输入验证码', 1500);
+                return false;
+            }
+        }
+
+        $('.phone').blur(function () {
+            vPhone();
+        });
+
+        $('.code').blur(function () {
+            vCode();
+        });
+        var send = false;
+        $('.get-code').click(function () {
+            if(send) {
+                return;
+            }
+            if(vPhone()) {
+                alert('发送成功');
+                var _this = $(this);
+                _this.text('获取验证码 60s');
+                send = true;
+                var t = 60;
+                var timer = setInterval(function () {
+                    t -= 1;
+                    if(t > 0) {
+                        _this.text('获取验证码 '+ t +'s');
+                    }else{
+                        _this.text('重新获取验证码');
+                        send = false;
+                        clearInterval(timer)
+                    }
+                },1000)
+            }
+        });
+
+        $('.submit').click(function () {
+            if(vPhone() && vCode()) {
+                alert('提交')
+            }
+        })
+
+        //        snackbar('登录失败！您的手机号未绑定', 1500);
+        $('.tab-wrap a').click(function () {
+            $('.tab-wrap a').removeClass('cur');
+            $(this).addClass('cur');
+            var index = $(this).index();
+            $('.tab-content').removeClass('cur-content');
+            $($('.tab-content')[index]).addClass('cur-content');
+        });
+
+        $('.btn-item .btn').mouseover(function () {
+            $(this).addClass('jello animated');
+        });
+        $('.btn-item .btn').mouseout(function () {
+            $(this).removeClass('jello animated');
+        });
+    </script>
+</div>
+
+<script>
+    var x = 12;
+    var y = 0;
+    var rand = parseInt(Math.random() * (x - y + 1) + y);
+    var obj = new WxLogin({
+        id:"login_container",
+        appid: "wx86ca1b8c72e0b055",
+        scope: "snsapi_login",
+        redirect_uri: "http://www.bimfree.com/Index/register",
+        state: rand,
+        style: "",
+        href: ""
+    });
+
+
+</script>
+</body>
+
+</html>
