@@ -99,11 +99,26 @@ function _Numbers($model,$map=''){
     return $thumbs_count;
 }
 
+
 /*
+ * 获取所有的表信息
+ * $model  数据表
+ * $map  检索条件
+ * $order  排序方式
+ * limit  数量
  * 获取所有的表信息
  * */
 function infos($model,$map='',$order='id desc',$field='*',$limit=5){
     $data = $model -> field($field) -> where($map) -> order($order) -> limit($limit) -> select();
+
+        foreach($data as $a=>$v){
+            if($v['image']){
+                $data[$a]['image'] = $_SERVER['SERVER_NAME'].$v['image'];
+            }
+            if($v['thumb']){
+                $data[$a]['thumb'] = $_SERVER['SERVER_NAME'].$v['thumb'];
+            }
+        }
     return $data;
 
 }

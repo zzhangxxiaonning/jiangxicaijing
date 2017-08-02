@@ -37,6 +37,7 @@ class CommonController extends Controller {
             exit;
         }
 
+
         
 	}
 
@@ -105,7 +106,7 @@ class CommonController extends Controller {
     protected function cat_name($sql,$id){
         $map['id']		=	array('eq',$id);
         $name = $sql -> where($map) -> find();
-        return $name;
+        return $name['catname'];
     }
 
     /*省市区名称*/
