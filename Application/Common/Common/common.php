@@ -71,8 +71,8 @@ function _Finds($model,$map='',$fields='*'){
  * 含有上下翻页和省略号
  * 调用分页shows方法
  */
-function _Listt($model,$map='',$fields='*',$orderby='id desc',$listRows=10,$pageClass='Pages'){
-	$listRows = $listRows?$listRows:10;
+function _Listt($model,$map='',$fields='*',$orderby='id desc',$listRows=5,$pageClass='Pages'){
+	$listRows = $listRows?$listRows:5;
 	$c_model=clone $model;
 	$count = $c_model->where($map)->count('*');
 	if ($count>0){
@@ -99,6 +99,27 @@ function _Numbers($model,$map=''){
     return $thumbs_count;
 }
 
+//活动标签
+function flag($start_time,$time,$end_time){
+
+    if($start_time > $time){
+        $flag_code = '1';
+        $flag = '报名中';
+    }
+    elseif($start_time <=$time && $$end_time >= $time){
+        $flag_code = '2';
+        $flag = '进行中';
+    }
+    elseif($end_time < $time){
+        $flag_code = '3';
+        $flag = '已结束';
+    }
+    $data = array(
+        'flag_code'=>$flag_code,
+        'flag'=>$flag,
+    );
+    return $data;
+}
 
 /*
  * 获取所有的表信息
@@ -113,10 +134,10 @@ function infos($model,$map='',$order='id desc',$field='*',$limit=5){
 
         foreach($data as $a=>$v){
             if($v['image']){
-                $data[$a]['image'] = $_SERVER['SERVER_NAME'].$v['image'];
+                $data[$a]['image'] = C('BASE_URL').$v['image'];
             }
             if($v['thumb']){
-                $data[$a]['thumb'] = $_SERVER['SERVER_NAME'].$v['thumb'];
+                $data[$a]['thumb'] = C('BASE_URL').$v['thumb'];
             }
         }
     return $data;

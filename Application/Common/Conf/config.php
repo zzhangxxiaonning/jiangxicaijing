@@ -13,7 +13,8 @@ $config = array(
 	'URL_MODEL'	=>	2,
 	// 'TMPL_EXCEPTION_FILE'	=> '404.html',
     'TMPL_CACHE_ON' => false,//禁止模板编译缓存
-    'HTML_CACHE_ON' => false,//禁止静态缓存 
+    'HTML_CACHE_ON' => false,//禁止静态缓存
+    'BASE_URL'      => $_SERVER['SERVER_NAME'],
 
 
 );
