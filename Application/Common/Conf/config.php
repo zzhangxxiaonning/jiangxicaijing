@@ -14,7 +14,9 @@ $config = array(
 	// 'TMPL_EXCEPTION_FILE'	=> '404.html',
     'TMPL_CACHE_ON' => false,//禁止模板编译缓存
     'HTML_CACHE_ON' => false,//禁止静态缓存
-    'BASE_URL'      => $_SERVER['SERVER_NAME'],
+    'BASE_URL'      => 'http://jiangxicaijing_tp.com',//域名
+    /*验证条件*/
+    'REGULAR'       => '/\w+@(\w|\d)+\.\w{2,3}/i',
 
 
 );

@@ -418,9 +418,9 @@ function isMobile($string){
  * 检查是否为邮箱地址
 **/
 function isEmail($string){
-	// $zz='/\w+@(\w|\d)+\.\w{2,3}/i';
-	$zz = getConfigName('email','zz');
-	if(preg_match($zz,$string)){  
+//	 $zz='/\w+@(\w|\d)+\.\w{2,3}/i';
+//	$zz = getConfigName('email','zz');
+	if(preg_match(C('REGULAR'),$string)){
 		return true;
 	}else{    
 		return false;

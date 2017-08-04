@@ -9,7 +9,7 @@ class ConfigController extends CommonController{
 			'1'=>array('id'=>'1','name'=>'站点配置'),
 //			'2'=>array('id'=>'2','name'=>'地图配置'),
 			// '3'=>array('id'=>'3','name'=>'微信配置'),
-			// '4'=>array('id'=>'4','name'=>'短信配置'),
+//			 '4'=>array('id'=>'4','name'=>'短信配置'),
 			 '5'=>array('id'=>'5','name'=>'邮件配置'),
 		);
 	}

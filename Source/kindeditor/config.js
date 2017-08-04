@@ -22,6 +22,7 @@ KindEditor.ready(function(K) {
         resizeType :1,
         allowPreviewEmoticons : true,
         allowImageUpload : true,
+        urlType : 'domain',
         afterBlur: function(){this.sync();}
     });
 

@@ -61,7 +61,6 @@ class CircleListController extends CommonController {
         }
 
         $this->ajaxReturn($json);
-        exit;
 	}
 
 

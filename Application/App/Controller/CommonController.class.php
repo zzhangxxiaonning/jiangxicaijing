@@ -36,8 +36,6 @@ class CommonController extends Controller {
             echo C('tip');
             exit;
         }
-
-
         
 	}
 
@@ -121,6 +119,19 @@ class CommonController extends Controller {
         $map['id']		=	array('eq',$id);
         $name = M('Member') -> where($map) -> find();
         return $name;
+    }
+
+    /*学生名称*/
+    protected function student_name($id){
+        $map['id']		=	array('eq',$id);
+        $name = M('Student') -> where($map) -> find();
+        return $name['username'];
+    }
+    /*教师名称*/
+    protected function teacher_name($id){
+        $map['id']		=	array('eq',$id);
+        $name = M('Teacher') -> where($map) -> find();
+        return $name['username'];
     }
 
     /**

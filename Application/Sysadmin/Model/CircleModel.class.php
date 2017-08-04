@@ -10,6 +10,7 @@ Class CircleModel extends Model{
 	//自动验证
 	protected  $_validate =array(
 		array('title','require','标题不能为空',0,'',3),
+		array('files','require','申请书不可为空',0,'',3),
 		array('start_time','require','开始时间不可为空！',0,'',3),
 		array('start_time,end_time','check_time_dq','开始时间需要大于当前时间！',1,'callback',3),
 		array('start_time,end_time','check_time_dx','结束时间需要大于开始时间！',1,'callback',3),
