@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3e69f0d4-32d9-425a-a5ef-0ece7ffd188f" name="默认的" comment="01">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html" afterPath="$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html" />
     </list>
     <ignored path="php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,20 +23,13 @@
     <favorites_list name="php" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Application/Home/View/Index/index.html">
+        <entry file="file://$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="24" column="89" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
-              <folding>
-                <marker date="1505316841967" expanded="true" signature="37175:37209" ph="..." />
-                <marker date="1505316841967" expanded="true" signature="37481:37499" ph="..." />
-                <marker date="1505316841967" expanded="true" signature="37543:37561" ph="..." />
-                <marker date="1505316841967" expanded="true" signature="37893:37927" ph="..." />
-                <marker date="1505316841967" expanded="true" signature="38190:38208" ph="..." />
-                <marker date="1505316841967" expanded="true" signature="38252:38270" ph="..." />
-              </folding>
+            <state relative-caret-position="121">
+              <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,7 +81,6 @@
         <option value="$PROJECT_DIR$/Application/Common/Common/common.php" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/View/Circle/show.html" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/View/Circle/edit_apply.html" />
-        <option value="$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/Controller/TeacherController.class.php" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/Controller/StudentController.class.php" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/View/Teacher/index.html" />
@@ -99,6 +92,7 @@
         <option value="$PROJECT_DIR$/Application/Sysadmin/View/Database/restore.html" />
         <option value="$PROJECT_DIR$/Application/Sysadmin/Controller/DatabaseController.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/View/Index/index.html" />
+        <option value="$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html" />
       </list>
     </option>
   </component>
@@ -112,8 +106,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1386" />
-    <option name="height" value="788" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="添加" />
@@ -194,7 +188,73 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Home" />
+              <option name="myItemId" value="Sysadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sysadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sysadmin" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="View" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Circle" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jiangxicaijing" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -283,7 +343,8 @@
       <workItem from="1501035257278" duration="25234000" />
       <workItem from="1501123974006" duration="18537000" />
       <workItem from="1501207847581" duration="25480000" />
-      <workItem from="1505316477755" duration="352000" />
+      <workItem from="1505316477755" duration="456000" />
+      <workItem from="1505317029309" duration="236000" />
     </task>
     <task id="LOCAL-00001" summary="默认的">
       <created>1505316571739</created>
@@ -306,21 +367,29 @@
       <option name="project" value="LOCAL" />
       <updated>1505316809952</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="01">
+      <created>1505316867996</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1505316867996</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175603000" />
+    <option name="totallyTimeSpent" value="175943000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -576,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="130" column="137" selection-start-line="130" selection-start-column="137" selection-end-line="130" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Sysadmin/View/Circle/show.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -645,9 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5282">
           <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#section#0;n#body#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -655,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="83" selection-start-line="16" selection-start-column="83" selection-end-line="16" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -663,20 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="90" column="79" selection-start-line="90" selection-start-column="63" selection-end-line="90" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#1138#1144#0" expanded="false" />
-            <element signature="e#1144#1150#0" expanded="false" />
-            <element signature="e#1588#1594#0" expanded="false" />
-            <element signature="e#1594#1600#0" expanded="false" />
-            <element signature="e#2122#2128#0" expanded="false" />
-            <element signature="e#2128#2134#0" expanded="false" />
-            <element signature="n#style#0;n#label#0;n#volist#0;n#td#1;n#tr#3;n#table#0;n#div#0;n#div#0;n#div#1;n#div#1;n#form#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="e#2487#2493#0" expanded="false" />
-            <element signature="e#2493#2499#0" expanded="false" />
-            <element signature="e#2620#2626#1" expanded="false" />
-            <element signature="e#2647#2653#1" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -684,7 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="34" column="9" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1324">
           <caret line="184" column="9" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -700,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,9 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="163" column="30" selection-start-line="163" selection-start-column="18" selection-end-line="163" selection-end-column="30" />
-          <folding>
-            <element signature="e#6#80#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -718,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="473" column="9" selection-start-line="473" selection-start-column="9" selection-end-line="473" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,14 +763,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="24" column="89" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
-          <folding>
-            <marker date="1505316841967" expanded="true" signature="37175:37209" ph="..." />
-            <marker date="1505316841967" expanded="true" signature="37481:37499" ph="..." />
-            <marker date="1505316841967" expanded="true" signature="37543:37561" ph="..." />
-            <marker date="1505316841967" expanded="true" signature="37893:37927" ph="..." />
-            <marker date="1505316841967" expanded="true" signature="38190:38208" ph="..." />
-            <marker date="1505316841967" expanded="true" signature="38252:38270" ph="..." />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Sysadmin/View/Circle/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
